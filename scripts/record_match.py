@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 API_KEY = os.environ["SR_API_KEY"]
-BASE_URL = "https://api.sportradar.com/soccer/extended/v4/en"
+BASE_URL = "https://api.sportradar.us/soccer-extended/production/v4/en"
 
 ENDPOINTS = {
     "summary": "/sport_events/{match_id}/summary.json",

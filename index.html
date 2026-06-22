@@ -408,32 +408,31 @@ async function fetchScheduleData() {
 // ── Render ───────────────────────────────────────────────────────────────────
 
 function formatKickoff(event) {
-  const d = event.scheduled;
+  const d = event.sport_event?.start_time;
   if (!d) return '';
   return new Date(d).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
 
 function getScore(event) {
   const s = event.sport_event_status;
-  if (!s) return null;
-  if (s.home_score !== undefined) return `${s.home_score} - ${s.away_score}`;
-  return null;
+  if (!s || s.home_score === undefined) return null;
+  return `${s.home_score} - ${s.away_score}`;
 }
 
 function getCompetition(event) {
-  return event.sport_event?.tournament?.name || event.tournament?.name || '';
+  return event.sport_event?.sport_event_context?.competition?.name || '';
 }
 
 function getTeams(event) {
-  const comps = event.sport_event?.competitors || event.competitors || [];
+  const comps = event.sport_event?.competitors || [];
   const home = comps.find(c => c.qualifier === 'home');
   const away = comps.find(c => c.qualifier === 'away');
   if (home && away) return `${home.name} vs ${away.name}`;
-  return event.id || 'Unknown match';
+  return event.sport_event?.id || 'Unknown match';
 }
 
 function getMatchId(event) {
-  return event.sport_event?.id || event.id || '';
+  return event.sport_event?.id || '';
 }
 
 function renderMatchCard(event, isLive) {
