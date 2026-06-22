@@ -1,5 +1,117 @@
 {
-  "updated_at": "2026-06-22T20:04:11.702587+00:00",
+  "updated_at": "2026-06-22T20:23:40.167460+00:00",
   "live": [],
-  "upcoming_today": []
+  "upcoming_today": [
+    {
+      "sport_event": {
+        "id": "sr:sport_event:66457010",
+        "start_time": "2026-06-22T21:00:00+00:00",
+        "start_time_confirmed": true,
+        "date_confirmed": true,
+        "sport_event_context": {
+          "sport": {
+            "id": "sr:sport:1",
+            "name": "Soccer"
+          },
+          "category": {
+            "id": "sr:category:4",
+            "name": "International"
+          },
+          "competition": {
+            "id": "sr:competition:16",
+            "name": "FIFA World Cup",
+            "parent_id": "sr:competition:24660",
+            "gender": "men"
+          },
+          "season": {
+            "id": "sr:season:101177",
+            "name": "World Cup 2026",
+            "start_date": "2026-06-11",
+            "end_date": "2026-07-19",
+            "year": "2026",
+            "competition_id": "sr:competition:16"
+          },
+          "stage": {
+            "order": 1,
+            "type": "league",
+            "phase": "regular season",
+            "start_date": "2026-06-16",
+            "end_date": "2026-06-26",
+            "year": "2026"
+          },
+          "round": {
+            "number": 2,
+            "competition_sport_event_number": 42
+          },
+          "groups": [
+            {
+              "id": "sr:league:81547",
+              "name": "World Cup 2026, Group I",
+              "group_name": "I"
+            }
+          ]
+        },
+        "coverage": {
+          "type": "sport_event",
+          "sport_event_properties": {
+            "lineups": true,
+            "formations": true,
+            "venue": true,
+            "extended_play_by_play": true,
+            "extended_player_stats": true,
+            "extended_team_stats": true,
+            "lineups_availability": "pre",
+            "ballspotting": true,
+            "commentary": true,
+            "fun_facts": true,
+            "goal_scorers": true,
+            "goal_scorers_live": true,
+            "scores": "live",
+            "game_clock": true,
+            "deeper_play_by_play": true,
+            "deeper_player_stats": true,
+            "deeper_team_stats": true,
+            "basic_play_by_play": true,
+            "basic_player_stats": true,
+            "basic_team_stats": true
+          }
+        },
+        "competitors": [
+          {
+            "id": "sr:competitor:4481",
+            "name": "France",
+            "country": "France",
+            "country_code": "FRA",
+            "abbreviation": "FRA",
+            "qualifier": "home",
+            "gender": "male"
+          },
+          {
+            "id": "sr:competitor:4767",
+            "name": "Iraq",
+            "country": "Iraq",
+            "country_code": "IRQ",
+            "abbreviation": "IRQ",
+            "qualifier": "away",
+            "gender": "male"
+          }
+        ],
+        "venue": {
+          "id": "sr:venue:1833",
+          "name": "Philadelphia Stadium",
+          "capacity": 68324,
+          "city_name": "Philadelphia, PA",
+          "city_id": "sr:city:929",
+          "country_name": "USA",
+          "map_coordinates": "39.9014, -75.1675",
+          "country_code": "USA",
+          "timezone": "America/New_York"
+        }
+      },
+      "sport_event_status": {
+        "status": "not_started",
+        "match_status": "not_started"
+      }
+    }
+  ]
 }
