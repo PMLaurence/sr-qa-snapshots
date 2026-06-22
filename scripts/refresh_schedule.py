@@ -6,7 +6,7 @@ to data/live_matches.json for the web UI to consume.
 import os
 import json
 import requests
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 API_KEY = os.environ["SR_API_KEY"]
@@ -40,14 +40,22 @@ def main():
 
         today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
+        now = datetime.now(timezone.utc)
+        window_end = now + timedelta(hours=24)
+
         for entry in schedules:
             status = entry.get("sport_event_status", {}).get("status", "")
-            start_time = entry.get("sport_event", {}).get("start_time", "")
+            start_time_str = entry.get("sport_event", {}).get("start_time", "")
 
             if status in LIVE_STATUSES:
                 result["live"].append(entry)
-            elif status in NOT_STARTED_STATUSES and start_time.startswith(today):
-                result["upcoming_today"].append(entry)
+            elif status in NOT_STARTED_STATUSES and start_time_str:
+                try:
+                    start_time = datetime.fromisoformat(start_time_str.replace("Z", "+00:00"))
+                    if now <= start_time <= window_end:
+                        result["upcoming_today"].append(entry)
+                except ValueError:
+                    pass
 
         print(f"Live matches: {len(result['live'])}")
         print(f"Upcoming today: {len(result['upcoming_today'])}")
