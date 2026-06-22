@@ -10,231 +10,242 @@
     --surface: #1a1d27;
     --border: #2a2d3a;
     --accent: #e63946;
-    --accent-dim: #c1121f;
     --green: #2ec4b6;
     --yellow: #ffb703;
     --text: #e2e8f0;
     --muted: #64748b;
     --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'SF Mono', 'Fira Code', monospace;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; min-height: 100vh; }
 
+  /* ── Header ── */
   header {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
-    padding: 16px 24px;
+    padding: 0 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 52px;
   }
-  header h1 { font-size: 16px; font-weight: 600; letter-spacing: 0.02em; }
+  header h1 { font-size: 15px; font-weight: 600; letter-spacing: 0.02em; flex-shrink: 0; }
   header h1 span { color: var(--accent); }
-  .header-meta { display: flex; align-items: center; gap: 12px; }
+
+  /* ── Tabs ── */
+  .tabs { display: flex; gap: 2px; margin-left: 28px; }
+  .tab {
+    padding: 0 16px;
+    height: 52px;
+    line-height: 52px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--text); border-bottom-color: var(--accent); }
+
+  .header-meta { display: flex; align-items: center; gap: 10px; margin-left: auto; }
   .refresh-time { color: var(--muted); font-size: 12px; }
 
+  /* ── Tab pages ── */
+  .page { display: none; padding: 20px 24px; max-width: 1100px; margin: 0 auto; }
+  .page.active { display: block; }
+
+  /* ── Setup banner ── */
   .setup-banner {
-    background: #1a1500;
-    border: 1px solid #5a4000;
-    border-radius: 8px;
-    padding: 14px 18px;
-    margin: 20px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+    background: #1a1500; border: 1px solid #5a4000; border-radius: 8px;
+    padding: 14px 18px; margin: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
   }
   .setup-banner p { color: #ffd166; font-size: 13px; }
   .setup-banner button { flex-shrink: 0; }
 
-  main { padding: 20px 24px; max-width: 1100px; margin: 0 auto; }
-
-  section { margin-bottom: 32px; }
+  /* ── Sections ── */
+  section { margin-bottom: 28px; }
   section h2 {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--muted); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
   }
   .badge {
-    background: var(--border);
-    color: var(--text);
-    border-radius: 10px;
-    padding: 1px 7px;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: none;
-    letter-spacing: 0;
+    background: var(--border); color: var(--text); border-radius: 10px;
+    padding: 1px 7px; font-size: 11px; font-weight: 700;
+    text-transform: none; letter-spacing: 0;
   }
   .badge.live { background: var(--accent); color: #fff; }
 
+  /* ── Match cards ── */
   .matches-grid { display: flex; flex-direction: column; gap: 8px; }
-
   .match-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px 16px;
-    display: grid;
-    grid-template-columns: 1fr auto auto;
-    align-items: center;
-    gap: 16px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 12px 16px; display: grid;
+    grid-template-columns: 1fr auto auto; align-items: center; gap: 16px;
     transition: border-color 0.15s;
   }
   .match-card:hover { border-color: #3a3d4a; }
-  .match-card.recording { border-color: var(--accent); }
-
-  .match-info {}
-  .match-teams { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .match-teams { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
   .match-meta { color: var(--muted); font-size: 12px; display: flex; gap: 10px; }
-
-  .match-score {
-    font-size: 18px;
-    font-weight: 700;
-    text-align: center;
-    min-width: 60px;
-    color: var(--green);
-  }
+  .match-score { font-size: 18px; font-weight: 700; text-align: center; min-width: 60px; color: var(--green); }
   .match-score.upcoming { color: var(--muted); font-size: 13px; font-weight: 400; }
-
-  .match-status {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 3px 8px;
-    border-radius: 4px;
-  }
-  .status-live { background: rgba(230, 57, 70, 0.15); color: var(--accent); }
-  .status-upcoming { background: rgba(255, 183, 3, 0.1); color: var(--yellow); }
-  .status-recording { background: rgba(230, 57, 70, 0.25); color: var(--accent); }
-
+  .match-status { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 8px; border-radius: 4px; }
+  .status-live { background: rgba(230,57,70,0.15); color: var(--accent); }
+  .status-upcoming { background: rgba(255,183,3,0.1); color: var(--yellow); }
   .match-actions { display: flex; gap: 8px; align-items: center; }
 
+  /* ── Recordings list ── */
+  .recordings-list { display: flex; flex-direction: column; gap: 6px; }
+  .recording-row {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
+    padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .recording-name { font-size: 13px; font-weight: 500; }
+  .recording-meta { color: var(--muted); font-size: 12px; margin-top: 2px; }
+  .run-status { font-size: 11px; font-weight: 600; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; }
+  .run-in_progress { background: rgba(46,196,182,0.15); color: var(--green); }
+  .run-completed { background: rgba(100,116,139,0.15); color: var(--muted); }
+  .run-failure { background: rgba(230,57,70,0.15); color: var(--accent); }
+
+  /* ── Buttons ── */
   button {
-    cursor: pointer;
-    border: none;
-    border-radius: 6px;
-    font-family: var(--font);
-    font-size: 13px;
-    font-weight: 500;
-    padding: 7px 14px;
-    transition: opacity 0.15s, background 0.15s;
+    cursor: pointer; border: none; border-radius: 6px;
+    font-family: var(--font); font-size: 13px; font-weight: 500;
+    padding: 7px 14px; transition: opacity 0.15s;
   }
   button:hover { opacity: 0.85; }
   button:disabled { opacity: 0.4; cursor: not-allowed; }
-
   .btn-primary { background: var(--accent); color: #fff; }
   .btn-secondary { background: var(--border); color: var(--text); }
   .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
   .btn-small { padding: 5px 10px; font-size: 12px; }
 
-  .empty { color: var(--muted); font-size: 13px; padding: 20px 0; }
+  .empty { color: var(--muted); font-size: 13px; padding: 16px 0; }
 
-  /* Recent recordings */
-  .recordings-list { display: flex; flex-direction: column; gap: 6px; }
-  .recording-row {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 10px 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-  .recording-name { font-size: 13px; font-weight: 500; }
-  .recording-meta { color: var(--muted); font-size: 12px; margin-top: 2px; }
-  .run-status {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 2px 7px;
-    border-radius: 4px;
-  }
-  .run-in_progress { background: rgba(46, 196, 182, 0.15); color: var(--green); }
-  .run-completed { background: rgba(100, 116, 139, 0.15); color: var(--muted); }
-  .run-failure { background: rgba(230, 57, 70, 0.15); color: var(--accent); }
+  /* ── Snapshot browser ── */
+  .snapshot-layout { display: grid; grid-template-columns: 260px 1fr; gap: 16px; min-height: 500px; }
 
-  /* Modal */
+  .snapshot-tree {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    overflow-y: auto; max-height: 700px;
+  }
+  .tree-section { border-bottom: 1px solid var(--border); }
+  .tree-section:last-child { border-bottom: none; }
+  .tree-heading {
+    padding: 10px 14px; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
+    background: rgba(0,0,0,0.2);
+  }
+  .tree-item {
+    padding: 8px 14px 8px 20px; font-size: 12px; cursor: pointer;
+    border-left: 2px solid transparent; transition: background 0.1s, border-color 0.1s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .tree-item:hover { background: rgba(255,255,255,0.04); }
+  .tree-item.active { background: rgba(230,57,70,0.1); border-left-color: var(--accent); color: var(--accent); }
+  .tree-item .tree-icon { color: var(--muted); font-size: 11px; flex-shrink: 0; }
+  .tree-sub { padding-left: 30px; }
+  .tree-sub .tree-item { padding-left: 10px; }
+
+  .snapshot-viewer {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+  .viewer-header {
+    padding: 12px 16px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+  .viewer-title { font-size: 13px; font-weight: 500; }
+  .viewer-meta { color: var(--muted); font-size: 12px; }
+  .viewer-actions { display: flex; gap: 8px; }
+
+  .snapshot-timeline {
+    padding: 12px 16px; border-bottom: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .snapshot-pill {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 4px;
+    padding: 4px 10px; font-size: 11px; font-family: var(--mono); cursor: pointer;
+    transition: border-color 0.1s, color 0.1s; white-space: nowrap;
+  }
+  .snapshot-pill:hover { border-color: var(--muted); }
+  .snapshot-pill.active { border-color: var(--accent); color: var(--accent); }
+
+  .json-viewer {
+    flex: 1; overflow-y: auto; padding: 16px;
+    font-family: var(--mono); font-size: 12px; line-height: 1.6;
+    max-height: 550px;
+  }
+  .json-key { color: #7dd3fc; }
+  .json-string { color: #86efac; }
+  .json-number { color: #fda4af; }
+  .json-bool { color: #c4b5fd; }
+  .json-null { color: var(--muted); }
+
+  /* diff highlighting */
+  .json-added { background: rgba(46,196,182,0.12); border-left: 2px solid var(--green); padding-left: 4px; }
+  .json-changed { background: rgba(255,183,3,0.1); border-left: 2px solid var(--yellow); padding-left: 4px; }
+
+  .viewer-placeholder {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-size: 13px; padding: 40px;
+  }
+
+  /* ── Modals ── */
   .modal-overlay {
-    display: none;
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.7);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.7); z-index: 100;
+    align-items: center; justify-content: center;
   }
   .modal-overlay.open { display: flex; }
   .modal {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    width: 480px;
-    max-width: 95vw;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 24px; width: 480px; max-width: 95vw;
   }
   .modal h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
   .modal .modal-subtitle { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
   .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
-
   .field { margin-bottom: 14px; }
   .field label { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .field input, .field select, .field textarea {
-    width: 100%;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 8px 10px;
-    color: var(--text);
-    font-family: var(--font);
-    font-size: 13px;
-    outline: none;
-    transition: border-color 0.15s;
+  .field input, .field select {
+    width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+    padding: 8px 10px; color: var(--text); font-family: var(--font); font-size: 13px;
+    outline: none; transition: border-color 0.15s;
   }
-  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
-
+  .field input:focus, .field select:focus { border-color: var(--accent); }
   .checkboxes { display: flex; flex-wrap: wrap; gap: 8px; }
   .checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 6px 10px;
-    cursor: pointer;
-    font-size: 13px;
-    transition: border-color 0.15s;
+    display: flex; align-items: center; gap: 6px;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+    padding: 6px 10px; cursor: pointer; font-size: 13px; transition: border-color 0.15s;
   }
   .checkbox-label:has(input:checked) { border-color: var(--accent); color: var(--accent); }
   .checkbox-label input { accent-color: var(--accent); }
-
-  /* Setup modal */
   .setup-note { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.6; }
   .setup-note a { color: var(--green); }
+  .error-msg { color: var(--accent); font-size: 12px; margin-top: 6px; }
 
   .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.6s linear infinite; margin-right: 6px; vertical-align: middle; }
   @keyframes spin { to { transform: rotate(360deg); } }
-
   .dot-live { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite; }
   @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
-
-  .error-msg { color: var(--accent); font-size: 12px; margin-top: 6px; }
 </style>
 </head>
 <body>
 
 <header>
   <h1>SR QA <span>●</span> Match Recorder</h1>
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('recorder')">Recorder</div>
+    <div class="tab" onclick="switchTab('snapshots')">Snapshots</div>
+  </div>
   <div class="header-meta">
-    <span class="refresh-time" id="refresh-time">Loading...</span>
-    <button class="btn-ghost btn-small" onclick="loadMatches()">↻ Refresh</button>
+    <span class="refresh-time" id="refresh-time"></span>
+    <button class="btn-ghost btn-small" onclick="onRefresh()">↻ Refresh</button>
     <button class="btn-ghost btn-small" onclick="openSetup()">⚙ Setup</button>
   </div>
 </header>
@@ -244,40 +255,46 @@
   <button class="btn-primary btn-small" onclick="openSetup()">Configure now</button>
 </div>
 
-<main>
+<!-- ── Recorder tab ── -->
+<div class="page active" id="page-recorder">
   <section>
     <h2><span class="dot-live"></span> Live now <span class="badge live" id="live-count">0</span></h2>
-    <div class="matches-grid" id="live-matches">
-      <p class="empty">Loading live matches...</p>
-    </div>
+    <div class="matches-grid" id="live-matches"><p class="empty">Loading...</p></div>
   </section>
-
   <section>
     <h2>Upcoming today <span class="badge" id="upcoming-count">0</span></h2>
-    <div class="matches-grid" id="upcoming-matches">
-      <p class="empty">Loading upcoming matches...</p>
-    </div>
+    <div class="matches-grid" id="upcoming-matches"></div>
   </section>
-
   <section>
     <h2>Recent recordings <span class="badge" id="runs-count">0</span></h2>
-    <div class="recordings-list" id="recordings-list">
-      <p class="empty">Loading workflow runs...</p>
-    </div>
+    <div class="recordings-list" id="recordings-list"><p class="empty">Loading...</p></div>
   </section>
-</main>
+</div>
+
+<!-- ── Snapshots tab ── -->
+<div class="page" id="page-snapshots">
+  <div class="snapshot-layout">
+
+    <div class="snapshot-tree" id="snapshot-tree">
+      <div style="padding:20px;color:var(--muted);font-size:13px">Loading snapshots...</div>
+    </div>
+
+    <div class="snapshot-viewer" id="snapshot-viewer">
+      <div class="viewer-placeholder">Select a snapshot from the tree to view it</div>
+    </div>
+
+  </div>
+</div>
 
 <!-- Record Modal -->
 <div class="modal-overlay" id="record-modal">
   <div class="modal">
     <h3>Record Match</h3>
     <p class="modal-subtitle" id="record-match-label">—</p>
-
     <div class="field">
       <label>Match ID</label>
       <input type="text" id="record-match-id" readonly>
     </div>
-
     <div class="field">
       <label>Endpoints to capture</label>
       <div class="checkboxes">
@@ -287,7 +304,6 @@
         <label class="checkbox-label"><input type="checkbox" name="ep" value="extended_timeline" checked> extended_timeline</label>
       </div>
     </div>
-
     <div class="field">
       <label>Poll interval (seconds)</label>
       <select id="record-interval">
@@ -296,9 +312,7 @@
         <option value="120">120s — light</option>
       </select>
     </div>
-
     <p class="error-msg" id="record-error" style="display:none"></p>
-
     <div class="modal-actions">
       <button class="btn-ghost" onclick="closeModal('record-modal')">Cancel</button>
       <button class="btn-primary" id="record-submit-btn" onclick="submitRecording()">Start Recording</button>
@@ -310,18 +324,15 @@
 <div class="modal-overlay" id="setup-modal">
   <div class="modal">
     <h3>GitHub Setup</h3>
-    <p class="modal-subtitle">Required to trigger recordings from this UI.</p>
-
+    <p class="modal-subtitle">Required to trigger recordings and browse snapshots.</p>
     <div class="field">
       <label>GitHub Username</label>
       <input type="text" id="setup-owner" placeholder="your-github-username">
     </div>
-
     <div class="field">
       <label>Repository name</label>
       <input type="text" id="setup-repo" placeholder="sr-qa-snapshots">
     </div>
-
     <div class="field">
       <label>GitHub Personal Access Token</label>
       <input type="password" id="setup-token" placeholder="ghp_...">
@@ -331,9 +342,7 @@
         Stored only in your browser (localStorage).
       </div>
     </div>
-
     <p class="error-msg" id="setup-error" style="display:none"></p>
-
     <div class="modal-actions">
       <button class="btn-ghost" onclick="closeModal('setup-modal')">Cancel</button>
       <button class="btn-primary" id="setup-save-btn" onclick="saveSetup()">Save & Test</button>
@@ -342,22 +351,18 @@
 </div>
 
 <script>
-// ── Config ──────────────────────────────────────────────────────────────────
+// ── Config ────────────────────────────────────────────────────────────────────
 
 function getConfig() {
   return {
     owner: localStorage.getItem('gh_owner') || '',
-    repo: localStorage.getItem('gh_repo') || 'sr-qa-snapshots',
+    repo:  localStorage.getItem('gh_repo')  || 'sr-qa-snapshots',
     token: localStorage.getItem('gh_token') || '',
   };
 }
+function isConfigured() { const c = getConfig(); return !!(c.owner && c.token); }
 
-function isConfigured() {
-  const c = getConfig();
-  return c.owner && c.token;
-}
-
-// ── GitHub API ───────────────────────────────────────────────────────────────
+// ── GitHub API ────────────────────────────────────────────────────────────────
 
 async function ghFetch(path, opts = {}) {
   const { token } = getConfig();
@@ -370,182 +375,292 @@ async function ghFetch(path, opts = {}) {
       ...(opts.headers || {}),
     },
   });
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err.message || `GitHub API ${res.status}`);
-  }
+  if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.message || `GitHub ${res.status}`); }
   return res.status === 204 ? null : res.json();
 }
 
-async function triggerWorkflow(matchId, endpoints, interval) {
-  const { owner, repo } = getConfig();
-  await ghFetch(`/repos/${owner}/${repo}/actions/workflows/record_match.yml/dispatches`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      ref: 'main',
-      inputs: { match_id: matchId, endpoints, interval: String(interval) },
-    }),
-  });
+// ── Tab switching ─────────────────────────────────────────────────────────────
+
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', ['recorder','snapshots'][i] === name));
+  document.querySelectorAll('.page').forEach(p => p.classList.toggle('active', p.id === `page-${name}`));
+  if (name === 'snapshots') loadSnapshotTree();
 }
 
-async function fetchWorkflowRuns() {
-  const { owner, repo } = getConfig();
-  return ghFetch(`/repos/${owner}/${repo}/actions/runs?per_page=10&event=workflow_dispatch`);
+function onRefresh() {
+  const active = document.querySelector('.tab.active')?.textContent?.toLowerCase();
+  if (active === 'snapshots') loadSnapshotTree(true);
+  else loadMatches();
 }
 
-// ── Schedule data ────────────────────────────────────────────────────────────
-
-async function fetchScheduleData() {
-  const { owner, repo } = getConfig();
-  // Try raw GitHub content (works if repo is public)
-  const url = `https://raw.githubusercontent.com/${owner}/${repo}/main/data/live_matches.json`;
-  const res = await fetch(url + '?t=' + Date.now());
-  if (!res.ok) throw new Error(`Could not load schedule data (${res.status})`);
-  return res.json();
-}
-
-// ── Render ───────────────────────────────────────────────────────────────────
-
-function formatKickoff(event) {
-  const d = event.sport_event?.start_time;
-  if (!d) return '';
-  return new Date(d).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-}
-
-function getScore(event) {
-  const s = event.sport_event_status;
-  if (!s || s.home_score === undefined) return null;
-  return `${s.home_score} - ${s.away_score}`;
-}
-
-function getCompetition(event) {
-  return event.sport_event?.sport_event_context?.competition?.name || '';
-}
-
-function getTeams(event) {
-  const comps = event.sport_event?.competitors || [];
-  const home = comps.find(c => c.qualifier === 'home');
-  const away = comps.find(c => c.qualifier === 'away');
-  if (home && away) return `${home.name} vs ${away.name}`;
-  return event.sport_event?.id || 'Unknown match';
-}
-
-function getMatchId(event) {
-  return event.sport_event?.id || '';
-}
-
-function renderMatchCard(event, isLive) {
-  const id = getMatchId(event);
-  const teams = getTeams(event);
-  const score = getScore(event);
-  const competition = getCompetition(event);
-  const kickoff = formatKickoff(event.sport_event || event);
-  const status = event.sport_event_status?.status || '';
-  const matchMin = event.sport_event_status?.match_time;
-
-  const scoreHtml = score
-    ? `<div class="match-score">${score}</div>`
-    : `<div class="match-score upcoming">${kickoff}</div>`;
-
-  const statusLabel = isLive
-    ? `<span class="match-status status-live">${matchMin ? matchMin + "'" : 'Live'}</span>`
-    : `<span class="match-status status-upcoming">Upcoming</span>`;
-
-  const canRecord = isConfigured();
-
-  return `
-    <div class="match-card" id="card-${id.replace(/[^a-z0-9]/gi, '_')}">
-      <div class="match-info">
-        <div class="match-teams">${teams}</div>
-        <div class="match-meta">
-          <span>${competition}</span>
-          ${kickoff ? `<span>${kickoff}</span>` : ''}
-        </div>
-      </div>
-      ${scoreHtml}
-      <div class="match-actions">
-        ${statusLabel}
-        <button class="btn-primary btn-small" ${canRecord ? '' : 'disabled'}
-          onclick="openRecordModal('${id}', '${teams.replace(/'/g,"\\'")}')">
-          ● Record
-        </button>
-      </div>
-    </div>
-  `;
-}
-
-function renderRun(run) {
-  const name = run.display_title || run.name || run.id;
-  const startedAt = new Date(run.created_at).toLocaleString();
-  const statusClass = `run-${run.status}`;
-  const statusLabel = run.status === 'in_progress' ? `<span class="spinner"></span>${run.status}` : run.status;
-
-  return `
-    <div class="recording-row">
-      <div>
-        <div class="recording-name">${name}</div>
-        <div class="recording-meta">${startedAt}</div>
-      </div>
-      <a href="${run.html_url}" target="_blank" style="text-decoration:none">
-        <span class="run-status ${statusClass}">${statusLabel}</span>
-      </a>
-    </div>
-  `;
-}
-
-// ── Load & display ────────────────────────────────────────────────────────────
+// ── Recorder ─────────────────────────────────────────────────────────────────
 
 async function loadMatches() {
   if (!isConfigured()) {
     document.getElementById('setup-banner').style.display = 'flex';
     document.getElementById('live-matches').innerHTML = '<p class="empty">Configure GitHub credentials first.</p>';
     document.getElementById('upcoming-matches').innerHTML = '';
-    document.getElementById('refresh-time').textContent = '';
     return;
   }
-
   document.getElementById('setup-banner').style.display = 'none';
-
   try {
-    const data = await fetchScheduleData();
-    const live = data.live || [];
-    const upcoming = data.upcoming_today || [];
-
+    const { owner, repo } = getConfig();
+    const url = `https://raw.githubusercontent.com/${owner}/${repo}/main/data/live_matches.json?t=${Date.now()}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`${res.status}`);
+    const data = await res.json();
+    const live = data.live || [], upcoming = data.upcoming_today || [];
     document.getElementById('live-count').textContent = live.length;
     document.getElementById('upcoming-count').textContent = upcoming.length;
-
-    document.getElementById('live-matches').innerHTML = live.length
-      ? live.map(e => renderMatchCard(e, true)).join('')
-      : '<p class="empty">No live matches right now.</p>';
-
-    document.getElementById('upcoming-matches').innerHTML = upcoming.length
-      ? upcoming.map(e => renderMatchCard(e, false)).join('')
-      : '<p class="empty">No upcoming matches today.</p>';
-
+    document.getElementById('live-matches').innerHTML = live.length ? live.map(e => renderMatchCard(e, true)).join('') : '<p class="empty">No live matches right now.</p>';
+    document.getElementById('upcoming-matches').innerHTML = upcoming.length ? upcoming.map(e => renderMatchCard(e, false)).join('') : '<p class="empty">No upcoming matches today.</p>';
     const updated = data.updated_at ? new Date(data.updated_at).toLocaleTimeString() : '—';
-    document.getElementById('refresh-time').textContent = `Data as of ${updated}`;
+    document.getElementById('refresh-time').textContent = `Updated ${updated}`;
   } catch (e) {
-    document.getElementById('live-matches').innerHTML = `<p class="empty">Could not load schedule: ${e.message}. Make sure the repository is public and the refresh_schedule workflow has run at least once.</p>`;
-    document.getElementById('upcoming-matches').innerHTML = '';
-    document.getElementById('refresh-time').textContent = 'Error';
+    document.getElementById('live-matches').innerHTML = `<p class="empty">Could not load schedule: ${e.message}</p>`;
   }
-
   await loadRuns();
 }
 
 async function loadRuns() {
   if (!isConfigured()) return;
   try {
-    const data = await fetchWorkflowRuns();
+    const { owner, repo } = getConfig();
+    const data = await ghFetch(`/repos/${owner}/${repo}/actions/runs?per_page=10&event=workflow_dispatch`);
     const runs = (data?.workflow_runs || []).filter(r => r.name === 'Record Match Snapshots');
     document.getElementById('runs-count').textContent = runs.length;
-    document.getElementById('recordings-list').innerHTML = runs.length
-      ? runs.map(renderRun).join('')
-      : '<p class="empty">No recordings yet.</p>';
+    document.getElementById('recordings-list').innerHTML = runs.length ? runs.map(r => `
+      <div class="recording-row">
+        <div>
+          <div class="recording-name">${r.display_title || r.name}</div>
+          <div class="recording-meta">${new Date(r.created_at).toLocaleString()}</div>
+        </div>
+        <a href="${r.html_url}" target="_blank" style="text-decoration:none">
+          <span class="run-status run-${r.status}">${r.status === 'in_progress' ? '<span class="spinner"></span>' : ''}${r.status}</span>
+        </a>
+      </div>`).join('') : '<p class="empty">No recordings yet.</p>';
   } catch (e) {
     document.getElementById('recordings-list').innerHTML = `<p class="empty">Could not load runs: ${e.message}</p>`;
   }
+}
+
+function formatKickoff(event) {
+  const d = event.sport_event?.start_time;
+  return d ? new Date(d).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
+}
+function getScore(event) {
+  const s = event.sport_event_status;
+  return (s && s.home_score !== undefined) ? `${s.home_score} - ${s.away_score}` : null;
+}
+function getCompetition(event) {
+  return event.sport_event?.sport_event_context?.competition?.name || '';
+}
+function getTeams(event) {
+  const comps = event.sport_event?.competitors || [];
+  const home = comps.find(c => c.qualifier === 'home');
+  const away = comps.find(c => c.qualifier === 'away');
+  return (home && away) ? `${home.name} vs ${away.name}` : (event.sport_event?.id || 'Unknown');
+}
+function getMatchId(event) { return event.sport_event?.id || ''; }
+
+function renderMatchCard(event, isLive) {
+  const id = getMatchId(event);
+  const teams = getTeams(event);
+  const score = getScore(event);
+  const competition = getCompetition(event);
+  const kickoff = formatKickoff(event);
+  const matchMin = event.sport_event_status?.match_time;
+  const scoreHtml = score
+    ? `<div class="match-score">${score}</div>`
+    : `<div class="match-score upcoming">${kickoff}</div>`;
+  const statusLabel = isLive
+    ? `<span class="match-status status-live">${matchMin ? matchMin + "'" : 'Live'}</span>`
+    : `<span class="match-status status-upcoming">Upcoming</span>`;
+  return `
+    <div class="match-card">
+      <div>
+        <div class="match-teams">${teams}</div>
+        <div class="match-meta"><span>${competition}</span>${kickoff ? `<span>${kickoff}</span>` : ''}</div>
+      </div>
+      ${scoreHtml}
+      <div class="match-actions">
+        ${statusLabel}
+        <button class="btn-primary btn-small" ${isConfigured() ? '' : 'disabled'}
+          onclick="openRecordModal('${id}', '${teams.replace(/'/g,"\\'")}')">● Record</button>
+      </div>
+    </div>`;
+}
+
+// ── Snapshot browser ──────────────────────────────────────────────────────────
+
+let snapshotState = { date: null, match: null, endpoint: null, files: [], currentFile: null };
+
+async function listDir(path) {
+  const { owner, repo } = getConfig();
+  return ghFetch(`/repos/${owner}/${repo}/contents/${path}`);
+}
+
+async function loadSnapshotTree(force = false) {
+  if (!isConfigured()) {
+    document.getElementById('snapshot-tree').innerHTML = '<div style="padding:20px;color:var(--muted);font-size:13px">Configure GitHub credentials first.</div>';
+    return;
+  }
+  const tree = document.getElementById('snapshot-tree');
+  tree.innerHTML = '<div style="padding:16px;color:var(--muted);font-size:13px"><span class="spinner"></span> Loading...</div>';
+  try {
+    const dates = await listDir('snapshots');
+    const realDates = dates.filter(d => d.type === 'dir' && d.name !== '.gitkeep');
+    if (!realDates.length) {
+      tree.innerHTML = '<div style="padding:20px;color:var(--muted);font-size:13px">No snapshots yet — start a recording first.</div>';
+      return;
+    }
+    renderTree(realDates);
+    // Auto-expand most recent date
+    if (!snapshotState.date) selectDate(realDates[realDates.length - 1].name);
+  } catch (e) {
+    tree.innerHTML = `<div style="padding:16px;color:var(--accent);font-size:13px">Error: ${e.message}</div>`;
+  }
+}
+
+async function selectDate(date) {
+  snapshotState = { date, match: null, endpoint: null, files: [], currentFile: null };
+  updateTreeActiveDate(date);
+  try {
+    const matches = await listDir(`snapshots/${date}`);
+    renderMatchNodes(date, matches.filter(m => m.type === 'dir'));
+  } catch (e) { console.error(e); }
+}
+
+async function selectMatch(date, match) {
+  snapshotState.match = match;
+  snapshotState.endpoint = null;
+  snapshotState.files = [];
+  snapshotState.currentFile = null;
+  updateViewerPlaceholder('Select an endpoint from the tree');
+  try {
+    const endpoints = await listDir(`snapshots/${date}/${match}`);
+    renderEndpointNodes(date, match, endpoints.filter(e => e.type === 'dir'));
+  } catch (e) { console.error(e); }
+}
+
+async function selectEndpoint(date, match, endpoint) {
+  snapshotState.endpoint = endpoint;
+  snapshotState.currentFile = null;
+  try {
+    const files = await listDir(`snapshots/${date}/${match}/${endpoint}`);
+    const jsonFiles = files.filter(f => f.name.endsWith('.json')).sort((a, b) => a.name.localeCompare(b.name));
+    snapshotState.files = jsonFiles;
+    renderViewer(date, match, endpoint, jsonFiles);
+    if (jsonFiles.length) loadSnapshot(jsonFiles[jsonFiles.length - 1]); // load most recent
+  } catch (e) { console.error(e); }
+}
+
+async function loadSnapshot(file) {
+  snapshotState.currentFile = file.name;
+  updatePillActive(file.name);
+  const { owner, repo } = getConfig();
+  const url = `https://raw.githubusercontent.com/${owner}/${repo}/main/${file.path}`;
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    renderJson(data);
+  } catch (e) {
+    document.getElementById('json-content').innerHTML = `<span style="color:var(--accent)">Error loading: ${e.message}</span>`;
+  }
+}
+
+// ── Tree rendering ────────────────────────────────────────────────────────────
+
+function renderTree(dates) {
+  const tree = document.getElementById('snapshot-tree');
+  tree.innerHTML = dates.map(d => `
+    <div class="tree-section" id="tree-date-${d.name}">
+      <div class="tree-item" onclick="selectDate('${d.name}')">
+        <span class="tree-icon">📅</span> ${d.name}
+      </div>
+      <div id="tree-matches-${d.name}"></div>
+    </div>`).join('');
+}
+
+function renderMatchNodes(date, matches) {
+  const container = document.getElementById(`tree-matches-${date}`);
+  if (!container) return;
+  container.innerHTML = matches.map(m => `
+    <div class="tree-sub">
+      <div class="tree-item" id="tree-match-${m.name}" onclick="selectMatch('${date}', '${m.name}')">
+        <span class="tree-icon">⚽</span> ${formatMatchName(m.name)}
+      </div>
+      <div id="tree-endpoints-${m.name}"></div>
+    </div>`).join('');
+}
+
+function renderEndpointNodes(date, match, endpoints) {
+  const container = document.getElementById(`tree-endpoints-${match}`);
+  if (!container) return;
+  container.innerHTML = endpoints.map(e => `
+    <div class="tree-sub">
+      <div class="tree-item" id="tree-ep-${e.name}" onclick="selectEndpoint('${date}', '${match}', '${e.name}')">
+        <span class="tree-icon">📄</span> ${e.name}
+      </div>
+    </div>`).join('');
+}
+
+function formatMatchName(name) {
+  // sr_sport_event_66457010 → #66457010
+  const m = name.match(/(\d+)$/);
+  return m ? `Event ${m[1]}` : name;
+}
+
+function updateTreeActiveDate(date) {
+  document.querySelectorAll('.tree-item').forEach(el => {
+    if (el.textContent.trim().includes(date)) el.classList.add('active');
+  });
+}
+
+// ── Viewer rendering ──────────────────────────────────────────────────────────
+
+function renderViewer(date, match, endpoint, files) {
+  const viewer = document.getElementById('snapshot-viewer');
+  const ts = files.map(f => {
+    const label = f.name.replace('.json', '').replace('T', ' ').replace('Z', '');
+    return `<div class="snapshot-pill" id="pill-${f.name}" onclick="loadSnapshot(${JSON.stringify(f)})">${label}</div>`;
+  }).join('');
+  viewer.innerHTML = `
+    <div class="viewer-header">
+      <div>
+        <div class="viewer-title">${endpoint}</div>
+        <div class="viewer-meta">${formatMatchName(match)} · ${date} · ${files.length} snapshot${files.length !== 1 ? 's' : ''}</div>
+      </div>
+    </div>
+    <div class="snapshot-timeline">${ts || '<span style="color:var(--muted);font-size:12px">No snapshots yet</span>'}</div>
+    <div class="json-viewer" id="json-content"><div style="color:var(--muted)">Select a snapshot above</div></div>`;
+}
+
+function updateViewerPlaceholder(msg) {
+  document.getElementById('snapshot-viewer').innerHTML = `<div class="viewer-placeholder">${msg}</div>`;
+}
+
+function updatePillActive(name) {
+  document.querySelectorAll('.snapshot-pill').forEach(p => p.classList.toggle('active', p.id === `pill-${name}`));
+}
+
+// ── JSON renderer ─────────────────────────────────────────────────────────────
+
+function renderJson(data) {
+  const el = document.getElementById('json-content');
+  if (!el) return;
+  el.innerHTML = syntaxHighlight(JSON.stringify(data, null, 2));
+}
+
+function syntaxHighlight(json) {
+  return json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, match => {
+      let cls = 'json-number';
+      if (/^"/.test(match)) cls = /:$/.test(match) ? 'json-key' : 'json-string';
+      else if (/true|false/.test(match)) cls = 'json-bool';
+      else if (/null/.test(match)) cls = 'json-null';
+      return `<span class="${cls}">${match}</span>`;
+    });
 }
 
 // ── Modals ────────────────────────────────────────────────────────────────────
@@ -559,37 +674,27 @@ function openRecordModal(matchId, matchLabel) {
   document.getElementById('record-modal').classList.add('open');
 }
 
-function closeModal(id) {
-  document.getElementById(id).classList.remove('open');
-}
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 
 async function submitRecording() {
   const matchId = document.getElementById('record-match-id').value;
-  const checked = [...document.querySelectorAll('input[name="ep"]:checked')];
-  const endpoints = checked.map(c => c.value).join(',');
+  const endpoints = [...document.querySelectorAll('input[name="ep"]:checked')].map(c => c.value).join(',');
   const interval = document.getElementById('record-interval').value;
   const btn = document.getElementById('record-submit-btn');
   const errEl = document.getElementById('record-error');
-
-  if (!endpoints) {
-    errEl.textContent = 'Select at least one endpoint.';
-    errEl.style.display = 'block';
-    return;
-  }
-
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span>Starting...';
-  errEl.style.display = 'none';
-
+  if (!endpoints) { errEl.textContent = 'Select at least one endpoint.'; errEl.style.display = 'block'; return; }
+  btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>Starting...'; errEl.style.display = 'none';
   try {
-    await triggerWorkflow(matchId, endpoints, interval);
+    const { owner, repo } = getConfig();
+    await ghFetch(`/repos/${owner}/${repo}/actions/workflows/record_match.yml/dispatches`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ref: 'main', inputs: { match_id: matchId, endpoints, interval: String(interval) } }),
+    });
     closeModal('record-modal');
     setTimeout(loadRuns, 3000);
   } catch (e) {
-    errEl.textContent = `Error: ${e.message}`;
-    errEl.style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = 'Start Recording';
+    errEl.textContent = `Error: ${e.message}`; errEl.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Start Recording';
   }
 }
 
@@ -606,52 +711,35 @@ function openSetup() {
 
 async function saveSetup() {
   const owner = document.getElementById('setup-owner').value.trim();
-  const repo = document.getElementById('setup-repo').value.trim();
+  const repo  = document.getElementById('setup-repo').value.trim();
   const token = document.getElementById('setup-token').value.trim();
   const btn = document.getElementById('setup-save-btn');
   const errEl = document.getElementById('setup-error');
-
-  if (!owner || !token || !repo) {
-    errEl.textContent = 'All fields are required.';
-    errEl.style.display = 'block';
-    return;
-  }
-
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span>Testing...';
-  errEl.style.display = 'none';
-
-  // Test credentials
+  if (!owner || !token || !repo) { errEl.textContent = 'All fields are required.'; errEl.style.display = 'block'; return; }
+  btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>Testing...'; errEl.style.display = 'none';
   try {
     const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
       headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' },
     });
     if (!res.ok) throw new Error(`Repo not found or token invalid (${res.status})`);
   } catch (e) {
-    errEl.textContent = `Connection failed: ${e.message}`;
-    errEl.style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = 'Save & Test';
-    return;
+    errEl.textContent = `Connection failed: ${e.message}`; errEl.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Save & Test'; return;
   }
-
   localStorage.setItem('gh_owner', owner);
   localStorage.setItem('gh_repo', repo);
   localStorage.setItem('gh_token', token);
-
   closeModal('setup-modal');
   loadMatches();
 }
 
-// Close modals on overlay click
 document.querySelectorAll('.modal-overlay').forEach(el => {
   el.addEventListener('click', e => { if (e.target === el) closeModal(el.id); });
 });
 
 // ── Init ──────────────────────────────────────────────────────────────────────
-
 loadMatches();
-setInterval(loadMatches, 5 * 60 * 1000); // Auto-refresh every 5 min
+setInterval(loadMatches, 5 * 60 * 1000);
 </script>
 </body>
 </html>
