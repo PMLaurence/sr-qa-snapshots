@@ -1,0 +1,56 @@
+name: Record Match Snapshots
+
+on:
+  workflow_dispatch:
+    inputs:
+      match_id:
+        description: 'Match ID (e.g. sr:sport_event:12345678)'
+        required: true
+        type: string
+      endpoints:
+        description: 'Comma-separated endpoints to capture'
+        default: 'summary,timeline,extended_summary,extended_timeline'
+        required: false
+        type: string
+      interval:
+        description: 'Poll interval in seconds'
+        default: '60'
+        required: false
+        type: string
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Record match
+        env:
+          SR_API_KEY: ${{ secrets.SR_API_KEY }}
+        run: |
+          python scripts/record_match.py \
+            "${{ inputs.match_id }}" \
+            --endpoints "${{ inputs.endpoints }}" \
+            --interval "${{ inputs.interval }}"
+
+      - name: Commit snapshots
+        run: |
+          git config user.name "SR QA Bot"
+          git config user.email "action@github.com"
+          git add snapshots/
+          git diff --staged --quiet || \
+            git commit -m "snapshots: ${{ inputs.match_id }} $(date -u +%Y-%m-%dT%H:%MZ)" && \
+            git push

@@ -1,0 +1,38 @@
+name: Refresh Live Schedule
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Refresh schedule
+        env:
+          SR_API_KEY: ${{ secrets.SR_API_KEY }}
+        run: python scripts/refresh_schedule.py
+
+      - name: Commit updated schedule
+        run: |
+          git config user.name "SR QA Bot"
+          git config user.email "action@github.com"
+          git add data/live_matches.json
+          git diff --staged --quiet || \
+            git commit -m "data: refresh schedule $(date -u +%Y-%m-%dT%H:%MZ)" && \
+            git push

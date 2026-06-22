@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SR QA — Match Recorder</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --border: #2a2d3a;
+    --accent: #e63946;
+    --accent-dim: #c1121f;
+    --green: #2ec4b6;
+    --yellow: #ffb703;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; min-height: 100vh; }
+
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  header h1 { font-size: 16px; font-weight: 600; letter-spacing: 0.02em; }
+  header h1 span { color: var(--accent); }
+  .header-meta { display: flex; align-items: center; gap: 12px; }
+  .refresh-time { color: var(--muted); font-size: 12px; }
+
+  .setup-banner {
+    background: #1a1500;
+    border: 1px solid #5a4000;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .setup-banner p { color: #ffd166; font-size: 13px; }
+  .setup-banner button { flex-shrink: 0; }
+
+  main { padding: 20px 24px; max-width: 1100px; margin: 0 auto; }
+
+  section { margin-bottom: 32px; }
+  section h2 {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .badge {
+    background: var(--border);
+    color: var(--text);
+    border-radius: 10px;
+    padding: 1px 7px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .badge.live { background: var(--accent); color: #fff; }
+
+  .matches-grid { display: flex; flex-direction: column; gap: 8px; }
+
+  .match-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 16px;
+    transition: border-color 0.15s;
+  }
+  .match-card:hover { border-color: #3a3d4a; }
+  .match-card.recording { border-color: var(--accent); }
+
+  .match-info {}
+  .match-teams { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .match-meta { color: var(--muted); font-size: 12px; display: flex; gap: 10px; }
+
+  .match-score {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    min-width: 60px;
+    color: var(--green);
+  }
+  .match-score.upcoming { color: var(--muted); font-size: 13px; font-weight: 400; }
+
+  .match-status {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .status-live { background: rgba(230, 57, 70, 0.15); color: var(--accent); }
+  .status-upcoming { background: rgba(255, 183, 3, 0.1); color: var(--yellow); }
+  .status-recording { background: rgba(230, 57, 70, 0.25); color: var(--accent); }
+
+  .match-actions { display: flex; gap: 8px; align-items: center; }
+
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 7px 14px;
+    transition: opacity 0.15s, background 0.15s;
+  }
+  button:hover { opacity: 0.85; }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-secondary { background: var(--border); color: var(--text); }
+  .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+  .btn-small { padding: 5px 10px; font-size: 12px; }
+
+  .empty { color: var(--muted); font-size: 13px; padding: 20px 0; }
+
+  /* Recent recordings */
+  .recordings-list { display: flex; flex-direction: column; gap: 6px; }
+  .recording-row {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .recording-name { font-size: 13px; font-weight: 500; }
+  .recording-meta { color: var(--muted); font-size: 12px; margin-top: 2px; }
+  .run-status {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+  .run-in_progress { background: rgba(46, 196, 182, 0.15); color: var(--green); }
+  .run-completed { background: rgba(100, 116, 139, 0.15); color: var(--muted); }
+  .run-failure { background: rgba(230, 57, 70, 0.15); color: var(--accent); }
+
+  /* Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    width: 480px;
+    max-width: 95vw;
+  }
+  .modal h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .modal .modal-subtitle { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+  .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
+
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
+
+  .checkboxes { display: flex; flex-wrap: wrap; gap: 8px; }
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: border-color 0.15s;
+  }
+  .checkbox-label:has(input:checked) { border-color: var(--accent); color: var(--accent); }
+  .checkbox-label input { accent-color: var(--accent); }
+
+  /* Setup modal */
+  .setup-note { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.6; }
+  .setup-note a { color: var(--green); }
+
+  .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.6s linear infinite; margin-right: 6px; vertical-align: middle; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .dot-live { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .error-msg { color: var(--accent); font-size: 12px; margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SR QA <span>●</span> Match Recorder</h1>
+  <div class="header-meta">
+    <span class="refresh-time" id="refresh-time">Loading...</span>
+    <button class="btn-ghost btn-small" onclick="loadMatches()">↻ Refresh</button>
+    <button class="btn-ghost btn-small" onclick="openSetup()">⚙ Setup</button>
+  </div>
+</header>
+
+<div class="setup-banner" id="setup-banner" style="display:none">
+  <p>⚠ GitHub credentials not configured. Add your GitHub token to start recording matches.</p>
+  <button class="btn-primary btn-small" onclick="openSetup()">Configure now</button>
+</div>
+
+<main>
+  <section>
+    <h2><span class="dot-live"></span> Live now <span class="badge live" id="live-count">0</span></h2>
+    <div class="matches-grid" id="live-matches">
+      <p class="empty">Loading live matches...</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Upcoming today <span class="badge" id="upcoming-count">0</span></h2>
+    <div class="matches-grid" id="upcoming-matches">
+      <p class="empty">Loading upcoming matches...</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Recent recordings <span class="badge" id="runs-count">0</span></h2>
+    <div class="recordings-list" id="recordings-list">
+      <p class="empty">Loading workflow runs...</p>
+    </div>
+  </section>
+</main>
+
+<!-- Record Modal -->
+<div class="modal-overlay" id="record-modal">
+  <div class="modal">
+    <h3>Record Match</h3>
+    <p class="modal-subtitle" id="record-match-label">—</p>
+
+    <div class="field">
+      <label>Match ID</label>
+      <input type="text" id="record-match-id" readonly>
+    </div>
+
+    <div class="field">
+      <label>Endpoints to capture</label>
+      <div class="checkboxes">
+        <label class="checkbox-label"><input type="checkbox" name="ep" value="summary" checked> summary</label>
+        <label class="checkbox-label"><input type="checkbox" name="ep" value="timeline" checked> timeline</label>
+        <label class="checkbox-label"><input type="checkbox" name="ep" value="extended_summary" checked> extended_summary</label>
+        <label class="checkbox-label"><input type="checkbox" name="ep" value="extended_timeline" checked> extended_timeline</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Poll interval (seconds)</label>
+      <select id="record-interval">
+        <option value="30">30s — detailed (higher API usage)</option>
+        <option value="60" selected>60s — standard</option>
+        <option value="120">120s — light</option>
+      </select>
+    </div>
+
+    <p class="error-msg" id="record-error" style="display:none"></p>
+
+    <div class="modal-actions">
+      <button class="btn-ghost" onclick="closeModal('record-modal')">Cancel</button>
+      <button class="btn-primary" id="record-submit-btn" onclick="submitRecording()">Start Recording</button>
+    </div>
+  </div>
+</div>
+
+<!-- Setup Modal -->
+<div class="modal-overlay" id="setup-modal">
+  <div class="modal">
+    <h3>GitHub Setup</h3>
+    <p class="modal-subtitle">Required to trigger recordings from this UI.</p>
+
+    <div class="field">
+      <label>GitHub Username</label>
+      <input type="text" id="setup-owner" placeholder="your-github-username">
+    </div>
+
+    <div class="field">
+      <label>Repository name</label>
+      <input type="text" id="setup-repo" placeholder="sr-qa-snapshots">
+    </div>
+
+    <div class="field">
+      <label>GitHub Personal Access Token</label>
+      <input type="password" id="setup-token" placeholder="ghp_...">
+      <div class="setup-note">
+        Needs the <strong>workflow</strong> scope.
+        Create one at <a href="https://github.com/settings/tokens/new" target="_blank">github.com/settings/tokens/new</a>.
+        Stored only in your browser (localStorage).
+      </div>
+    </div>
+
+    <p class="error-msg" id="setup-error" style="display:none"></p>
+
+    <div class="modal-actions">
+      <button class="btn-ghost" onclick="closeModal('setup-modal')">Cancel</button>
+      <button class="btn-primary" id="setup-save-btn" onclick="saveSetup()">Save & Test</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Config ──────────────────────────────────────────────────────────────────
+
+function getConfig() {
+  return {
+    owner: localStorage.getItem('gh_owner') || '',
+    repo: localStorage.getItem('gh_repo') || 'sr-qa-snapshots',
+    token: localStorage.getItem('gh_token') || '',
+  };
+}
+
+function isConfigured() {
+  const c = getConfig();
+  return c.owner && c.token;
+}
+
+// ── GitHub API ───────────────────────────────────────────────────────────────
+
+async function ghFetch(path, opts = {}) {
+  const { token } = getConfig();
+  const res = await fetch(`https://api.github.com${path}`, {
+    ...opts,
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      ...(opts.headers || {}),
+    },
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || `GitHub API ${res.status}`);
+  }
+  return res.status === 204 ? null : res.json();
+}
+
+async function triggerWorkflow(matchId, endpoints, interval) {
+  const { owner, repo } = getConfig();
+  await ghFetch(`/repos/${owner}/${repo}/actions/workflows/record_match.yml/dispatches`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      ref: 'main',
+      inputs: { match_id: matchId, endpoints, interval: String(interval) },
+    }),
+  });
+}
+
+async function fetchWorkflowRuns() {
+  const { owner, repo } = getConfig();
+  return ghFetch(`/repos/${owner}/${repo}/actions/runs?per_page=10&event=workflow_dispatch`);
+}
+
+// ── Schedule data ────────────────────────────────────────────────────────────
+
+async function fetchScheduleData() {
+  const { owner, repo } = getConfig();
+  // Try raw GitHub content (works if repo is public)
+  const url = `https://raw.githubusercontent.com/${owner}/${repo}/main/data/live_matches.json`;
+  const res = await fetch(url + '?t=' + Date.now());
+  if (!res.ok) throw new Error(`Could not load schedule data (${res.status})`);
+  return res.json();
+}
+
+// ── Render ───────────────────────────────────────────────────────────────────
+
+function formatKickoff(event) {
+  const d = event.scheduled;
+  if (!d) return '';
+  return new Date(d).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+function getScore(event) {
+  const s = event.sport_event_status;
+  if (!s) return null;
+  if (s.home_score !== undefined) return `${s.home_score} - ${s.away_score}`;
+  return null;
+}
+
+function getCompetition(event) {
+  return event.sport_event?.tournament?.name || event.tournament?.name || '';
+}
+
+function getTeams(event) {
+  const comps = event.sport_event?.competitors || event.competitors || [];
+  const home = comps.find(c => c.qualifier === 'home');
+  const away = comps.find(c => c.qualifier === 'away');
+  if (home && away) return `${home.name} vs ${away.name}`;
+  return event.id || 'Unknown match';
+}
+
+function getMatchId(event) {
+  return event.sport_event?.id || event.id || '';
+}
+
+function renderMatchCard(event, isLive) {
+  const id = getMatchId(event);
+  const teams = getTeams(event);
+  const score = getScore(event);
+  const competition = getCompetition(event);
+  const kickoff = formatKickoff(event.sport_event || event);
+  const status = event.sport_event_status?.status || '';
+  const matchMin = event.sport_event_status?.match_time;
+
+  const scoreHtml = score
+    ? `<div class="match-score">${score}</div>`
+    : `<div class="match-score upcoming">${kickoff}</div>`;
+
+  const statusLabel = isLive
+    ? `<span class="match-status status-live">${matchMin ? matchMin + "'" : 'Live'}</span>`
+    : `<span class="match-status status-upcoming">Upcoming</span>`;
+
+  const canRecord = isConfigured();
+
+  return `
+    <div class="match-card" id="card-${id.replace(/[^a-z0-9]/gi, '_')}">
+      <div class="match-info">
+        <div class="match-teams">${teams}</div>
+        <div class="match-meta">
+          <span>${competition}</span>
+          ${kickoff ? `<span>${kickoff}</span>` : ''}
+        </div>
+      </div>
+      ${scoreHtml}
+      <div class="match-actions">
+        ${statusLabel}
+        <button class="btn-primary btn-small" ${canRecord ? '' : 'disabled'}
+          onclick="openRecordModal('${id}', '${teams.replace(/'/g,"\\'")}')">
+          ● Record
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function renderRun(run) {
+  const name = run.display_title || run.name || run.id;
+  const startedAt = new Date(run.created_at).toLocaleString();
+  const statusClass = `run-${run.status}`;
+  const statusLabel = run.status === 'in_progress' ? `<span class="spinner"></span>${run.status}` : run.status;
+
+  return `
+    <div class="recording-row">
+      <div>
+        <div class="recording-name">${name}</div>
+        <div class="recording-meta">${startedAt}</div>
+      </div>
+      <a href="${run.html_url}" target="_blank" style="text-decoration:none">
+        <span class="run-status ${statusClass}">${statusLabel}</span>
+      </a>
+    </div>
+  `;
+}
+
+// ── Load & display ────────────────────────────────────────────────────────────
+
+async function loadMatches() {
+  if (!isConfigured()) {
+    document.getElementById('setup-banner').style.display = 'flex';
+    document.getElementById('live-matches').innerHTML = '<p class="empty">Configure GitHub credentials first.</p>';
+    document.getElementById('upcoming-matches').innerHTML = '';
+    document.getElementById('refresh-time').textContent = '';
+    return;
+  }
+
+  document.getElementById('setup-banner').style.display = 'none';
+
+  try {
+    const data = await fetchScheduleData();
+    const live = data.live || [];
+    const upcoming = data.upcoming_today || [];
+
+    document.getElementById('live-count').textContent = live.length;
+    document.getElementById('upcoming-count').textContent = upcoming.length;
+
+    document.getElementById('live-matches').innerHTML = live.length
+      ? live.map(e => renderMatchCard(e, true)).join('')
+      : '<p class="empty">No live matches right now.</p>';
+
+    document.getElementById('upcoming-matches').innerHTML = upcoming.length
+      ? upcoming.map(e => renderMatchCard(e, false)).join('')
+      : '<p class="empty">No upcoming matches today.</p>';
+
+    const updated = data.updated_at ? new Date(data.updated_at).toLocaleTimeString() : '—';
+    document.getElementById('refresh-time').textContent = `Data as of ${updated}`;
+  } catch (e) {
+    document.getElementById('live-matches').innerHTML = `<p class="empty">Could not load schedule: ${e.message}. Make sure the repository is public and the refresh_schedule workflow has run at least once.</p>`;
+    document.getElementById('upcoming-matches').innerHTML = '';
+    document.getElementById('refresh-time').textContent = 'Error';
+  }
+
+  await loadRuns();
+}
+
+async function loadRuns() {
+  if (!isConfigured()) return;
+  try {
+    const data = await fetchWorkflowRuns();
+    const runs = (data?.workflow_runs || []).filter(r => r.name === 'Record Match Snapshots');
+    document.getElementById('runs-count').textContent = runs.length;
+    document.getElementById('recordings-list').innerHTML = runs.length
+      ? runs.map(renderRun).join('')
+      : '<p class="empty">No recordings yet.</p>';
+  } catch (e) {
+    document.getElementById('recordings-list').innerHTML = `<p class="empty">Could not load runs: ${e.message}</p>`;
+  }
+}
+
+// ── Modals ────────────────────────────────────────────────────────────────────
+
+function openRecordModal(matchId, matchLabel) {
+  document.getElementById('record-match-id').value = matchId;
+  document.getElementById('record-match-label').textContent = matchLabel;
+  document.getElementById('record-error').style.display = 'none';
+  document.getElementById('record-submit-btn').disabled = false;
+  document.getElementById('record-submit-btn').textContent = 'Start Recording';
+  document.getElementById('record-modal').classList.add('open');
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+async function submitRecording() {
+  const matchId = document.getElementById('record-match-id').value;
+  const checked = [...document.querySelectorAll('input[name="ep"]:checked')];
+  const endpoints = checked.map(c => c.value).join(',');
+  const interval = document.getElementById('record-interval').value;
+  const btn = document.getElementById('record-submit-btn');
+  const errEl = document.getElementById('record-error');
+
+  if (!endpoints) {
+    errEl.textContent = 'Select at least one endpoint.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Starting...';
+  errEl.style.display = 'none';
+
+  try {
+    await triggerWorkflow(matchId, endpoints, interval);
+    closeModal('record-modal');
+    setTimeout(loadRuns, 3000);
+  } catch (e) {
+    errEl.textContent = `Error: ${e.message}`;
+    errEl.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Start Recording';
+  }
+}
+
+function openSetup() {
+  const c = getConfig();
+  document.getElementById('setup-owner').value = c.owner;
+  document.getElementById('setup-repo').value = c.repo;
+  document.getElementById('setup-token').value = c.token;
+  document.getElementById('setup-error').style.display = 'none';
+  document.getElementById('setup-save-btn').textContent = 'Save & Test';
+  document.getElementById('setup-save-btn').disabled = false;
+  document.getElementById('setup-modal').classList.add('open');
+}
+
+async function saveSetup() {
+  const owner = document.getElementById('setup-owner').value.trim();
+  const repo = document.getElementById('setup-repo').value.trim();
+  const token = document.getElementById('setup-token').value.trim();
+  const btn = document.getElementById('setup-save-btn');
+  const errEl = document.getElementById('setup-error');
+
+  if (!owner || !token || !repo) {
+    errEl.textContent = 'All fields are required.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Testing...';
+  errEl.style.display = 'none';
+
+  // Test credentials
+  try {
+    const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
+      headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' },
+    });
+    if (!res.ok) throw new Error(`Repo not found or token invalid (${res.status})`);
+  } catch (e) {
+    errEl.textContent = `Connection failed: ${e.message}`;
+    errEl.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Save & Test';
+    return;
+  }
+
+  localStorage.setItem('gh_owner', owner);
+  localStorage.setItem('gh_repo', repo);
+  localStorage.setItem('gh_token', token);
+
+  closeModal('setup-modal');
+  loadMatches();
+}
+
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click', e => { if (e.target === el) closeModal(el.id); });
+});
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+
+loadMatches();
+setInterval(loadMatches, 5 * 60 * 1000); // Auto-refresh every 5 min
+</script>
+</body>
+</html>
