@@ -51,6 +51,25 @@ def save_snapshot(match_id: str, endpoint_name: str, data: dict, snapshot_dir: P
     print(f"    saved {out_file.name}")
 
 
+def git_commit(match_id: str):
+    import subprocess
+    ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ")
+    result = subprocess.run(
+        ["git", "add", "snapshots/"],
+        capture_output=True, text=True
+    )
+    result = subprocess.run(
+        ["git", "diff", "--staged", "--quiet"],
+        capture_output=True
+    )
+    if result.returncode != 0:
+        subprocess.run(["git", "commit", "-m", f"snapshots: {match_id} {ts}"], check=True)
+        subprocess.run(["git", "push"], check=True)
+        print(f"  [git] committed and pushed at {ts}")
+    else:
+        print(f"  [git] nothing new to commit")
+
+
 def poll_once(match_id: str, endpoints: list, snapshot_dir: Path):
     for ep in endpoints:
         try:
@@ -73,6 +92,7 @@ def main():
     )
     parser.add_argument("--interval", type=int, default=60, help="Poll interval in seconds (default: 60)")
     parser.add_argument("--max-duration", type=int, default=10800, help="Max recording time in seconds (default: 10800 = 3h)")
+    parser.add_argument("--commit-every", type=int, default=5, help="Commit snapshots to git every N polls (default: 5)")
     args = parser.parse_args()
 
     match_id = args.match_id
@@ -102,6 +122,9 @@ def main():
 
         poll_once(match_id, endpoints, snapshot_dir)
 
+        if poll_count % args.commit_every == 0 or status in TERMINAL_STATUSES:
+            git_commit(match_id)
+
         if status in TERMINAL_STATUSES:
             print(f"\nMatch reached terminal status '{status}'. Recording complete.")
             print(f"Total polls: {poll_count}")
@@ -112,6 +135,7 @@ def main():
         if elapsed + sleep_time < args.max_duration:
             time.sleep(sleep_time)
     else:
+        git_commit(match_id)
         print(f"\nMax duration reached ({args.max_duration}s). Stopping.")
 
 
