@@ -64,6 +64,7 @@ def git_commit(match_id: str):
     )
     if result.returncode != 0:
         subprocess.run(["git", "commit", "-m", f"snapshots: {match_id} {ts}"], check=True)
+        subprocess.run(["git", "pull", "--rebase"], check=True)
         subprocess.run(["git", "push"], check=True)
         print(f"  [git] committed and pushed at {ts}")
     else:
