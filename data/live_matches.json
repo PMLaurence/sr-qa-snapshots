@@ -1,229 +1,7 @@
 {
-  "updated_at": "2026-06-23T22:06:13.300228+00:00",
+  "updated_at": "2026-06-24T10:29:34.606985+00:00",
   "live": [],
   "upcoming_today": [
-    {
-      "sport_event": {
-        "id": "sr:sport_event:66457048",
-        "start_time": "2026-06-23T23:00:00+00:00",
-        "start_time_confirmed": true,
-        "date_confirmed": true,
-        "sport_event_context": {
-          "sport": {
-            "id": "sr:sport:1",
-            "name": "Soccer"
-          },
-          "category": {
-            "id": "sr:category:4",
-            "name": "International"
-          },
-          "competition": {
-            "id": "sr:competition:16",
-            "name": "FIFA World Cup",
-            "parent_id": "sr:competition:24660",
-            "gender": "men"
-          },
-          "season": {
-            "id": "sr:season:101177",
-            "name": "World Cup 2026",
-            "start_date": "2026-06-11",
-            "end_date": "2026-07-19",
-            "year": "2026",
-            "competition_id": "sr:competition:16"
-          },
-          "stage": {
-            "order": 1,
-            "type": "league",
-            "phase": "regular season",
-            "start_date": "2026-06-17",
-            "end_date": "2026-06-27",
-            "year": "2026"
-          },
-          "round": {
-            "number": 2,
-            "competition_sport_event_number": 46
-          },
-          "groups": [
-            {
-              "id": "sr:league:81553",
-              "name": "World Cup 2026, Group L",
-              "group_name": "L"
-            }
-          ]
-        },
-        "coverage": {
-          "type": "sport_event",
-          "sport_event_properties": {
-            "lineups": true,
-            "formations": true,
-            "venue": true,
-            "extended_play_by_play": true,
-            "extended_player_stats": true,
-            "extended_team_stats": true,
-            "lineups_availability": "pre",
-            "ballspotting": true,
-            "commentary": true,
-            "fun_facts": true,
-            "goal_scorers": true,
-            "goal_scorers_live": true,
-            "scores": "live",
-            "game_clock": true,
-            "deeper_play_by_play": true,
-            "deeper_player_stats": true,
-            "deeper_team_stats": true,
-            "basic_play_by_play": true,
-            "basic_player_stats": true,
-            "basic_team_stats": true
-          }
-        },
-        "competitors": [
-          {
-            "id": "sr:competitor:5164",
-            "name": "Panama",
-            "country": "Panama",
-            "country_code": "PAN",
-            "abbreviation": "PAN",
-            "qualifier": "home",
-            "gender": "male"
-          },
-          {
-            "id": "sr:competitor:4715",
-            "name": "Croatia",
-            "country": "Croatia",
-            "country_code": "HRV",
-            "abbreviation": "CRO",
-            "qualifier": "away",
-            "gender": "male"
-          }
-        ],
-        "venue": {
-          "id": "sr:venue:2294",
-          "name": "Toronto Stadium",
-          "capacity": 43036,
-          "city_name": "Toronto, ON",
-          "city_id": "sr:city:969",
-          "country_name": "Canada",
-          "map_coordinates": "43.633209, -79.418564",
-          "country_code": "CAN",
-          "timezone": "Canada/Eastern"
-        }
-      },
-      "sport_event_status": {
-        "status": "not_started",
-        "match_status": "not_started"
-      }
-    },
-    {
-      "sport_event": {
-        "id": "sr:sport_event:66457036",
-        "start_time": "2026-06-24T02:00:00+00:00",
-        "start_time_confirmed": true,
-        "date_confirmed": true,
-        "sport_event_context": {
-          "sport": {
-            "id": "sr:sport:1",
-            "name": "Soccer"
-          },
-          "category": {
-            "id": "sr:category:4",
-            "name": "International"
-          },
-          "competition": {
-            "id": "sr:competition:16",
-            "name": "FIFA World Cup",
-            "parent_id": "sr:competition:24660",
-            "gender": "men"
-          },
-          "season": {
-            "id": "sr:season:101177",
-            "name": "World Cup 2026",
-            "start_date": "2026-06-11",
-            "end_date": "2026-07-19",
-            "year": "2026",
-            "competition_id": "sr:competition:16"
-          },
-          "stage": {
-            "order": 1,
-            "type": "league",
-            "phase": "regular season",
-            "start_date": "2026-06-17",
-            "end_date": "2026-06-27",
-            "year": "2026"
-          },
-          "round": {
-            "number": 2,
-            "competition_sport_event_number": 48
-          },
-          "groups": [
-            {
-              "id": "sr:league:81551",
-              "name": "World Cup 2026, Group K",
-              "group_name": "K"
-            }
-          ]
-        },
-        "coverage": {
-          "type": "sport_event",
-          "sport_event_properties": {
-            "lineups": true,
-            "formations": true,
-            "venue": true,
-            "extended_play_by_play": true,
-            "extended_player_stats": true,
-            "extended_team_stats": true,
-            "lineups_availability": "pre",
-            "ballspotting": true,
-            "commentary": true,
-            "fun_facts": true,
-            "goal_scorers": true,
-            "goal_scorers_live": true,
-            "scores": "live",
-            "game_clock": true,
-            "deeper_play_by_play": true,
-            "deeper_player_stats": true,
-            "deeper_team_stats": true,
-            "basic_play_by_play": true,
-            "basic_player_stats": true,
-            "basic_team_stats": true
-          }
-        },
-        "competitors": [
-          {
-            "id": "sr:competitor:4820",
-            "name": "Colombia",
-            "country": "Colombia",
-            "country_code": "COL",
-            "abbreviation": "COL",
-            "qualifier": "home",
-            "gender": "male"
-          },
-          {
-            "id": "sr:competitor:4823",
-            "name": "Congo DR",
-            "country": "Congo DR",
-            "country_code": "COD",
-            "abbreviation": "COD",
-            "qualifier": "away",
-            "gender": "male"
-          }
-        ],
-        "venue": {
-          "id": "sr:venue:2401",
-          "name": "Estadio Guadalajara",
-          "capacity": 45664,
-          "city_name": "Zapopan",
-          "city_id": "sr:city:10201",
-          "country_name": "Mexico",
-          "map_coordinates": "20.681667, -103.462776",
-          "country_code": "MEX",
-          "timezone": "America/Mexico_City"
-        }
-      },
-      "sport_event_status": {
-        "status": "not_started",
-        "match_status": "not_started"
-      }
-    },
     {
       "sport_event": {
         "id": "sr:sport_event:66456924",
@@ -661,6 +439,228 @@
           "map_coordinates": "33.7553, -84.4006",
           "country_code": "USA",
           "timezone": "America/New_York"
+        }
+      },
+      "sport_event_status": {
+        "status": "not_started",
+        "match_status": "not_started"
+      }
+    },
+    {
+      "sport_event": {
+        "id": "sr:sport_event:66456912",
+        "start_time": "2026-06-25T01:00:00+00:00",
+        "start_time_confirmed": true,
+        "date_confirmed": true,
+        "sport_event_context": {
+          "sport": {
+            "id": "sr:sport:1",
+            "name": "Soccer"
+          },
+          "category": {
+            "id": "sr:category:4",
+            "name": "International"
+          },
+          "competition": {
+            "id": "sr:competition:16",
+            "name": "FIFA World Cup",
+            "parent_id": "sr:competition:24660",
+            "gender": "men"
+          },
+          "season": {
+            "id": "sr:season:101177",
+            "name": "World Cup 2026",
+            "start_date": "2026-06-11",
+            "end_date": "2026-07-19",
+            "year": "2026",
+            "competition_id": "sr:competition:16"
+          },
+          "stage": {
+            "order": 1,
+            "type": "league",
+            "phase": "regular season",
+            "start_date": "2026-06-11",
+            "end_date": "2026-06-25",
+            "year": "2026"
+          },
+          "round": {
+            "number": 3,
+            "competition_sport_event_number": 53
+          },
+          "groups": [
+            {
+              "id": "sr:league:81531",
+              "name": "World Cup 2026, Group A",
+              "group_name": "A"
+            }
+          ]
+        },
+        "coverage": {
+          "type": "sport_event",
+          "sport_event_properties": {
+            "lineups": true,
+            "formations": true,
+            "venue": true,
+            "extended_play_by_play": true,
+            "extended_player_stats": true,
+            "extended_team_stats": true,
+            "lineups_availability": "pre",
+            "ballspotting": true,
+            "commentary": true,
+            "fun_facts": true,
+            "goal_scorers": true,
+            "goal_scorers_live": true,
+            "scores": "live",
+            "game_clock": true,
+            "deeper_play_by_play": true,
+            "deeper_player_stats": true,
+            "deeper_team_stats": true,
+            "basic_play_by_play": true,
+            "basic_player_stats": true,
+            "basic_team_stats": true
+          }
+        },
+        "competitors": [
+          {
+            "id": "sr:competitor:4714",
+            "name": "Czechia",
+            "country": "Czechia",
+            "country_code": "CZE",
+            "abbreviation": "CZE",
+            "qualifier": "home",
+            "gender": "male"
+          },
+          {
+            "id": "sr:competitor:4781",
+            "name": "Mexico",
+            "country": "Mexico",
+            "country_code": "MEX",
+            "abbreviation": "MEX",
+            "qualifier": "away",
+            "gender": "male"
+          }
+        ],
+        "venue": {
+          "id": "sr:venue:1004",
+          "name": "Mexico City Stadium",
+          "capacity": 80824,
+          "city_name": "Mexico City",
+          "city_id": "sr:city:426",
+          "country_name": "Mexico",
+          "map_coordinates": "19.3029, -99.1505",
+          "country_code": "MEX",
+          "timezone": "America/Mexico_City"
+        }
+      },
+      "sport_event_status": {
+        "status": "not_started",
+        "match_status": "not_started"
+      }
+    },
+    {
+      "sport_event": {
+        "id": "sr:sport_event:66456914",
+        "start_time": "2026-06-25T01:00:00+00:00",
+        "start_time_confirmed": true,
+        "date_confirmed": true,
+        "sport_event_context": {
+          "sport": {
+            "id": "sr:sport:1",
+            "name": "Soccer"
+          },
+          "category": {
+            "id": "sr:category:4",
+            "name": "International"
+          },
+          "competition": {
+            "id": "sr:competition:16",
+            "name": "FIFA World Cup",
+            "parent_id": "sr:competition:24660",
+            "gender": "men"
+          },
+          "season": {
+            "id": "sr:season:101177",
+            "name": "World Cup 2026",
+            "start_date": "2026-06-11",
+            "end_date": "2026-07-19",
+            "year": "2026",
+            "competition_id": "sr:competition:16"
+          },
+          "stage": {
+            "order": 1,
+            "type": "league",
+            "phase": "regular season",
+            "start_date": "2026-06-11",
+            "end_date": "2026-06-25",
+            "year": "2026"
+          },
+          "round": {
+            "number": 3,
+            "competition_sport_event_number": 54
+          },
+          "groups": [
+            {
+              "id": "sr:league:81531",
+              "name": "World Cup 2026, Group A",
+              "group_name": "A"
+            }
+          ]
+        },
+        "coverage": {
+          "type": "sport_event",
+          "sport_event_properties": {
+            "lineups": true,
+            "formations": true,
+            "venue": true,
+            "extended_play_by_play": true,
+            "extended_player_stats": true,
+            "extended_team_stats": true,
+            "lineups_availability": "pre",
+            "ballspotting": true,
+            "commentary": true,
+            "fun_facts": true,
+            "goal_scorers": true,
+            "goal_scorers_live": true,
+            "scores": "live",
+            "game_clock": true,
+            "deeper_play_by_play": true,
+            "deeper_player_stats": true,
+            "deeper_team_stats": true,
+            "basic_play_by_play": true,
+            "basic_player_stats": true,
+            "basic_team_stats": true
+          }
+        },
+        "competitors": [
+          {
+            "id": "sr:competitor:4736",
+            "name": "South Africa",
+            "country": "South Africa",
+            "country_code": "ZAF",
+            "abbreviation": "RSA",
+            "qualifier": "home",
+            "gender": "male"
+          },
+          {
+            "id": "sr:competitor:4735",
+            "name": "Korea Republic",
+            "country": "Republic of Korea",
+            "country_code": "KOR",
+            "abbreviation": "KOR",
+            "qualifier": "away",
+            "gender": "male"
+          }
+        ],
+        "venue": {
+          "id": "sr:venue:16526",
+          "name": "Estadio Monterrey",
+          "capacity": 51243,
+          "city_name": "Guadalupe",
+          "city_id": "sr:city:26134",
+          "country_name": "Mexico",
+          "map_coordinates": "25.670172, -100.2437",
+          "country_code": "MEX",
+          "timezone": "America/Mexico_City"
         }
       },
       "sport_event_status": {
