@@ -1,229 +1,6 @@
 {
-  "updated_at": "2026-06-27T20:40:52.404490+00:00",
-  "live": [],
-  "upcoming_today": [
-    {
-      "sport_event": {
-        "id": "sr:sport_event:66457050",
-        "start_time": "2026-06-27T21:00:00+00:00",
-        "start_time_confirmed": true,
-        "date_confirmed": true,
-        "sport_event_context": {
-          "sport": {
-            "id": "sr:sport:1",
-            "name": "Soccer"
-          },
-          "category": {
-            "id": "sr:category:4",
-            "name": "International"
-          },
-          "competition": {
-            "id": "sr:competition:16",
-            "name": "FIFA World Cup",
-            "parent_id": "sr:competition:24660",
-            "gender": "men"
-          },
-          "season": {
-            "id": "sr:season:101177",
-            "name": "World Cup 2026",
-            "start_date": "2026-06-11",
-            "end_date": "2026-07-19",
-            "year": "2026",
-            "competition_id": "sr:competition:16"
-          },
-          "stage": {
-            "order": 1,
-            "type": "league",
-            "phase": "regular season",
-            "start_date": "2026-06-17",
-            "end_date": "2026-06-27",
-            "year": "2026"
-          },
-          "round": {
-            "number": 3,
-            "competition_sport_event_number": 67
-          },
-          "groups": [
-            {
-              "id": "sr:league:81553",
-              "name": "World Cup 2026, Group L",
-              "group_name": "L"
-            }
-          ]
-        },
-        "coverage": {
-          "type": "sport_event",
-          "sport_event_properties": {
-            "lineups": true,
-            "formations": true,
-            "venue": true,
-            "extended_play_by_play": true,
-            "extended_player_stats": true,
-            "extended_team_stats": true,
-            "lineups_availability": "pre",
-            "ballspotting": true,
-            "commentary": true,
-            "fun_facts": true,
-            "goal_scorers": true,
-            "goal_scorers_live": true,
-            "scores": "live",
-            "game_clock": true,
-            "deeper_play_by_play": true,
-            "deeper_player_stats": true,
-            "deeper_team_stats": true,
-            "basic_play_by_play": true,
-            "basic_player_stats": true,
-            "basic_team_stats": true
-          }
-        },
-        "competitors": [
-          {
-            "id": "sr:competitor:5164",
-            "name": "Panama",
-            "country": "Panama",
-            "country_code": "PAN",
-            "abbreviation": "PAN",
-            "qualifier": "home",
-            "gender": "male"
-          },
-          {
-            "id": "sr:competitor:4713",
-            "name": "England",
-            "country": "England",
-            "country_code": "ENG",
-            "abbreviation": "ENG",
-            "qualifier": "away",
-            "gender": "male"
-          }
-        ],
-        "venue": {
-          "id": "sr:venue:1981",
-          "name": "New York New Jersey Stadium",
-          "capacity": 80663,
-          "city_name": "East Rutherford, NJ",
-          "city_id": "sr:city:972",
-          "country_name": "USA",
-          "map_coordinates": "40.8135, -74.0745",
-          "country_code": "USA",
-          "timezone": "America/New_York"
-        }
-      },
-      "sport_event_status": {
-        "status": "not_started",
-        "match_status": "not_started"
-      }
-    },
-    {
-      "sport_event": {
-        "id": "sr:sport_event:66457052",
-        "start_time": "2026-06-27T21:00:00+00:00",
-        "start_time_confirmed": true,
-        "date_confirmed": true,
-        "sport_event_context": {
-          "sport": {
-            "id": "sr:sport:1",
-            "name": "Soccer"
-          },
-          "category": {
-            "id": "sr:category:4",
-            "name": "International"
-          },
-          "competition": {
-            "id": "sr:competition:16",
-            "name": "FIFA World Cup",
-            "parent_id": "sr:competition:24660",
-            "gender": "men"
-          },
-          "season": {
-            "id": "sr:season:101177",
-            "name": "World Cup 2026",
-            "start_date": "2026-06-11",
-            "end_date": "2026-07-19",
-            "year": "2026",
-            "competition_id": "sr:competition:16"
-          },
-          "stage": {
-            "order": 1,
-            "type": "league",
-            "phase": "regular season",
-            "start_date": "2026-06-17",
-            "end_date": "2026-06-27",
-            "year": "2026"
-          },
-          "round": {
-            "number": 3,
-            "competition_sport_event_number": 68
-          },
-          "groups": [
-            {
-              "id": "sr:league:81553",
-              "name": "World Cup 2026, Group L",
-              "group_name": "L"
-            }
-          ]
-        },
-        "coverage": {
-          "type": "sport_event",
-          "sport_event_properties": {
-            "lineups": true,
-            "formations": true,
-            "venue": true,
-            "extended_play_by_play": true,
-            "extended_player_stats": true,
-            "extended_team_stats": true,
-            "lineups_availability": "pre",
-            "ballspotting": true,
-            "commentary": true,
-            "fun_facts": true,
-            "goal_scorers": true,
-            "goal_scorers_live": true,
-            "scores": "live",
-            "game_clock": true,
-            "deeper_play_by_play": true,
-            "deeper_player_stats": true,
-            "deeper_team_stats": true,
-            "basic_play_by_play": true,
-            "basic_player_stats": true,
-            "basic_team_stats": true
-          }
-        },
-        "competitors": [
-          {
-            "id": "sr:competitor:4715",
-            "name": "Croatia",
-            "country": "Croatia",
-            "country_code": "HRV",
-            "abbreviation": "CRO",
-            "qualifier": "home",
-            "gender": "male"
-          },
-          {
-            "id": "sr:competitor:4764",
-            "name": "Ghana",
-            "country": "Ghana",
-            "country_code": "GHA",
-            "abbreviation": "GHA",
-            "qualifier": "away",
-            "gender": "male"
-          }
-        ],
-        "venue": {
-          "id": "sr:venue:1833",
-          "name": "Philadelphia Stadium",
-          "capacity": 68324,
-          "city_name": "Philadelphia, PA",
-          "city_id": "sr:city:929",
-          "country_name": "USA",
-          "map_coordinates": "39.9014, -75.1675",
-          "country_code": "USA",
-          "timezone": "America/New_York"
-        }
-      },
-      "sport_event_status": {
-        "status": "not_started",
-        "match_status": "not_started"
-      }
-    },
+  "updated_at": "2026-06-28T00:17:59.485424+00:00",
+  "live": [
     {
       "sport_event": {
         "id": "sr:sport_event:66457038",
@@ -331,8 +108,23 @@
         }
       },
       "sport_event_status": {
-        "status": "not_started",
-        "match_status": "not_started"
+        "status": "live",
+        "match_status": "1st_half",
+        "home_score": 0,
+        "away_score": 0,
+        "period_scores": [
+          {
+            "home_score": 0,
+            "away_score": 0,
+            "type": "regular_period",
+            "number": 1
+          }
+        ],
+        "clock": {
+          "played": "45:00",
+          "stoppage_time_played": "01:09",
+          "stoppage_time_announced": "03:00"
+        }
       }
     },
     {
@@ -442,10 +234,27 @@
         }
       },
       "sport_event_status": {
-        "status": "not_started",
-        "match_status": "not_started"
+        "status": "live",
+        "match_status": "1st_half",
+        "home_score": 0,
+        "away_score": 1,
+        "period_scores": [
+          {
+            "home_score": 0,
+            "away_score": 1,
+            "type": "regular_period",
+            "number": 1
+          }
+        ],
+        "clock": {
+          "played": "45:00",
+          "stoppage_time_played": "00:59",
+          "stoppage_time_announced": "07:00"
+        }
       }
-    },
+    }
+  ],
+  "upcoming_today": [
     {
       "sport_event": {
         "id": "sr:sport_event:66457026",
