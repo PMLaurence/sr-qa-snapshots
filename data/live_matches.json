@@ -1,375 +1,7 @@
 {
-  "updated_at": "2026-07-03T20:34:30.265735+00:00",
-  "live": [
-    {
-      "sport_event": {
-        "id": "sr:sport_event:53452503",
-        "start_time": "2026-07-03T18:00:00+00:00",
-        "start_time_confirmed": true,
-        "date_confirmed": true,
-        "sport_event_context": {
-          "sport": {
-            "id": "sr:sport:1",
-            "name": "Soccer"
-          },
-          "category": {
-            "id": "sr:category:4",
-            "name": "International"
-          },
-          "competition": {
-            "id": "sr:competition:16",
-            "name": "FIFA World Cup",
-            "parent_id": "sr:competition:24660",
-            "gender": "men"
-          },
-          "season": {
-            "id": "sr:season:101177",
-            "name": "World Cup 2026",
-            "start_date": "2026-06-11",
-            "end_date": "2026-07-19",
-            "year": "2026",
-            "competition_id": "sr:competition:16"
-          },
-          "stage": {
-            "order": 2,
-            "type": "cup",
-            "phase": "playoffs",
-            "start_date": "2026-06-28",
-            "end_date": "2026-07-19",
-            "year": "2026"
-          },
-          "round": {
-            "name": "round_of_32",
-            "competition_sport_event_number": 88,
-            "cup_round_sport_event_number": 1,
-            "cup_round_number_of_sport_events": 1,
-            "cup_round_id": "sr:cup_round:2218785"
-          },
-          "groups": [
-            {
-              "id": "sr:cup:160561",
-              "name": "World Cup 2026, Knockout stage"
-            }
-          ]
-        },
-        "coverage": {
-          "type": "sport_event",
-          "sport_event_properties": {
-            "lineups": true,
-            "formations": true,
-            "venue": true,
-            "extended_play_by_play": true,
-            "extended_player_stats": true,
-            "extended_team_stats": true,
-            "lineups_availability": "pre",
-            "ballspotting": true,
-            "commentary": true,
-            "fun_facts": true,
-            "goal_scorers": true,
-            "goal_scorers_live": true,
-            "scores": "live",
-            "game_clock": true,
-            "deeper_play_by_play": true,
-            "deeper_player_stats": true,
-            "deeper_team_stats": true,
-            "basic_play_by_play": true,
-            "basic_player_stats": true,
-            "basic_team_stats": true
-          }
-        },
-        "competitors": [
-          {
-            "id": "sr:competitor:4741",
-            "name": "Australia",
-            "country": "Australia",
-            "country_code": "AUS",
-            "abbreviation": "AUS",
-            "qualifier": "home",
-            "gender": "male"
-          },
-          {
-            "id": "sr:competitor:4758",
-            "name": "Egypt",
-            "country": "Egypt",
-            "country_code": "EGY",
-            "abbreviation": "EGY",
-            "qualifier": "away",
-            "gender": "male"
-          }
-        ],
-        "venue": {
-          "id": "sr:venue:6650",
-          "name": "Dallas Stadium",
-          "capacity": 70649,
-          "city_name": "Arlington, TX",
-          "city_id": "sr:city:4410",
-          "country_name": "USA",
-          "map_coordinates": "32.748, -97.0934",
-          "country_code": "USA",
-          "timezone": "America/Chicago"
-        }
-      },
-      "sport_event_status": {
-        "status": "live",
-        "match_status": "2nd_extra",
-        "home_score": 1,
-        "away_score": 1,
-        "home_normaltime_score": 1,
-        "away_normaltime_score": 1,
-        "home_overtime_score": 0,
-        "away_overtime_score": 0,
-        "period_scores": [
-          {
-            "home_score": 0,
-            "away_score": 1,
-            "type": "regular_period",
-            "number": 1
-          },
-          {
-            "home_score": 1,
-            "away_score": 0,
-            "type": "regular_period",
-            "number": 2
-          },
-          {
-            "home_score": 0,
-            "away_score": 0,
-            "type": "overtime"
-          }
-        ],
-        "clock": {
-          "played": "115:36"
-        }
-      }
-    }
-  ],
+  "updated_at": "2026-07-04T07:29:22.036551+00:00",
+  "live": [],
   "upcoming_today": [
-    {
-      "sport_event": {
-        "id": "sr:sport_event:53452569",
-        "start_time": "2026-07-03T22:00:00+00:00",
-        "start_time_confirmed": true,
-        "date_confirmed": true,
-        "sport_event_context": {
-          "sport": {
-            "id": "sr:sport:1",
-            "name": "Soccer"
-          },
-          "category": {
-            "id": "sr:category:4",
-            "name": "International"
-          },
-          "competition": {
-            "id": "sr:competition:16",
-            "name": "FIFA World Cup",
-            "parent_id": "sr:competition:24660",
-            "gender": "men"
-          },
-          "season": {
-            "id": "sr:season:101177",
-            "name": "World Cup 2026",
-            "start_date": "2026-06-11",
-            "end_date": "2026-07-19",
-            "year": "2026",
-            "competition_id": "sr:competition:16"
-          },
-          "stage": {
-            "order": 2,
-            "type": "cup",
-            "phase": "playoffs",
-            "start_date": "2026-06-28",
-            "end_date": "2026-07-19",
-            "year": "2026"
-          },
-          "round": {
-            "name": "round_of_32",
-            "competition_sport_event_number": 86,
-            "cup_round_sport_event_number": 1,
-            "cup_round_number_of_sport_events": 1,
-            "cup_round_id": "sr:cup_round:2218783"
-          },
-          "groups": [
-            {
-              "id": "sr:cup:160561",
-              "name": "World Cup 2026, Knockout stage"
-            }
-          ]
-        },
-        "coverage": {
-          "type": "sport_event",
-          "sport_event_properties": {
-            "lineups": true,
-            "formations": true,
-            "venue": true,
-            "extended_play_by_play": true,
-            "extended_player_stats": true,
-            "extended_team_stats": true,
-            "lineups_availability": "pre",
-            "ballspotting": true,
-            "commentary": true,
-            "fun_facts": true,
-            "goal_scorers": true,
-            "goal_scorers_live": true,
-            "scores": "live",
-            "game_clock": true,
-            "deeper_play_by_play": true,
-            "deeper_player_stats": true,
-            "deeper_team_stats": true,
-            "basic_play_by_play": true,
-            "basic_player_stats": true,
-            "basic_team_stats": true
-          }
-        },
-        "competitors": [
-          {
-            "id": "sr:competitor:4819",
-            "name": "Argentina",
-            "country": "Argentina",
-            "country_code": "ARG",
-            "abbreviation": "ARG",
-            "qualifier": "home",
-            "gender": "male"
-          },
-          {
-            "id": "sr:competitor:4753",
-            "name": "Cape Verde",
-            "country": "Cape Verde",
-            "country_code": "CPV",
-            "abbreviation": "CPV",
-            "qualifier": "away",
-            "gender": "male"
-          }
-        ],
-        "venue": {
-          "id": "sr:venue:21306",
-          "name": "Miami Stadium",
-          "capacity": 64478,
-          "city_name": "Miami, FL",
-          "city_id": "sr:city:897",
-          "country_name": "USA",
-          "map_coordinates": "25.9583, -80.2396",
-          "country_code": "USA",
-          "timezone": "America/New_York"
-        }
-      },
-      "sport_event_status": {
-        "status": "not_started",
-        "match_status": "not_started"
-      }
-    },
-    {
-      "sport_event": {
-        "id": "sr:sport_event:53452507",
-        "start_time": "2026-07-04T01:30:00+00:00",
-        "start_time_confirmed": true,
-        "date_confirmed": true,
-        "sport_event_context": {
-          "sport": {
-            "id": "sr:sport:1",
-            "name": "Soccer"
-          },
-          "category": {
-            "id": "sr:category:4",
-            "name": "International"
-          },
-          "competition": {
-            "id": "sr:competition:16",
-            "name": "FIFA World Cup",
-            "parent_id": "sr:competition:24660",
-            "gender": "men"
-          },
-          "season": {
-            "id": "sr:season:101177",
-            "name": "World Cup 2026",
-            "start_date": "2026-06-11",
-            "end_date": "2026-07-19",
-            "year": "2026",
-            "competition_id": "sr:competition:16"
-          },
-          "stage": {
-            "order": 2,
-            "type": "cup",
-            "phase": "playoffs",
-            "start_date": "2026-06-28",
-            "end_date": "2026-07-19",
-            "year": "2026"
-          },
-          "round": {
-            "name": "round_of_32",
-            "competition_sport_event_number": 87,
-            "cup_round_sport_event_number": 1,
-            "cup_round_number_of_sport_events": 1,
-            "cup_round_id": "sr:cup_round:2218789"
-          },
-          "groups": [
-            {
-              "id": "sr:cup:160561",
-              "name": "World Cup 2026, Knockout stage"
-            }
-          ]
-        },
-        "coverage": {
-          "type": "sport_event",
-          "sport_event_properties": {
-            "lineups": true,
-            "formations": true,
-            "venue": true,
-            "extended_play_by_play": true,
-            "extended_player_stats": true,
-            "extended_team_stats": true,
-            "lineups_availability": "pre",
-            "ballspotting": true,
-            "commentary": true,
-            "fun_facts": true,
-            "goal_scorers": true,
-            "goal_scorers_live": true,
-            "scores": "live",
-            "game_clock": true,
-            "deeper_play_by_play": true,
-            "deeper_player_stats": true,
-            "deeper_team_stats": true,
-            "basic_play_by_play": true,
-            "basic_player_stats": true,
-            "basic_team_stats": true
-          }
-        },
-        "competitors": [
-          {
-            "id": "sr:competitor:4820",
-            "name": "Colombia",
-            "country": "Colombia",
-            "country_code": "COL",
-            "abbreviation": "COL",
-            "qualifier": "home",
-            "gender": "male"
-          },
-          {
-            "id": "sr:competitor:4764",
-            "name": "Ghana",
-            "country": "Ghana",
-            "country_code": "GHA",
-            "abbreviation": "GHA",
-            "qualifier": "away",
-            "gender": "male"
-          }
-        ],
-        "venue": {
-          "id": "sr:venue:8189",
-          "name": "Kansas City Stadium",
-          "capacity": 69045,
-          "city_name": "Kansas City, MO",
-          "city_id": "sr:city:861",
-          "country_name": "USA",
-          "map_coordinates": "39.049019, -94.48414",
-          "country_code": "USA",
-          "timezone": "America/Chicago"
-        }
-      },
-      "sport_event_status": {
-        "status": "not_started",
-        "match_status": "not_started"
-      }
-    },
     {
       "sport_event": {
         "id": "sr:sport_event:53452511",
@@ -476,6 +108,119 @@
           "map_coordinates": "29.6847, -95.4107",
           "country_code": "USA",
           "timezone": "America/Chicago"
+        }
+      },
+      "sport_event_status": {
+        "status": "not_started",
+        "match_status": "not_started"
+      }
+    },
+    {
+      "sport_event": {
+        "id": "sr:sport_event:53452509",
+        "start_time": "2026-07-04T21:00:00+00:00",
+        "start_time_confirmed": true,
+        "date_confirmed": true,
+        "sport_event_context": {
+          "sport": {
+            "id": "sr:sport:1",
+            "name": "Soccer"
+          },
+          "category": {
+            "id": "sr:category:4",
+            "name": "International"
+          },
+          "competition": {
+            "id": "sr:competition:16",
+            "name": "FIFA World Cup",
+            "parent_id": "sr:competition:24660",
+            "gender": "men"
+          },
+          "season": {
+            "id": "sr:season:101177",
+            "name": "World Cup 2026",
+            "start_date": "2026-06-11",
+            "end_date": "2026-07-19",
+            "year": "2026",
+            "competition_id": "sr:competition:16"
+          },
+          "stage": {
+            "order": 2,
+            "type": "cup",
+            "phase": "playoffs",
+            "start_date": "2026-06-28",
+            "end_date": "2026-07-19",
+            "year": "2026"
+          },
+          "round": {
+            "name": "round_of_16",
+            "competition_sport_event_number": 89,
+            "cup_round_sport_event_number": 1,
+            "cup_round_number_of_sport_events": 1,
+            "cup_round_id": "sr:cup_round:2218791"
+          },
+          "groups": [
+            {
+              "id": "sr:cup:160561",
+              "name": "World Cup 2026, Knockout stage"
+            }
+          ]
+        },
+        "coverage": {
+          "type": "sport_event",
+          "sport_event_properties": {
+            "lineups": true,
+            "formations": true,
+            "venue": true,
+            "extended_play_by_play": true,
+            "extended_player_stats": true,
+            "extended_team_stats": true,
+            "lineups_availability": "pre",
+            "ballspotting": true,
+            "commentary": true,
+            "fun_facts": true,
+            "goal_scorers": true,
+            "goal_scorers_live": true,
+            "scores": "live",
+            "game_clock": true,
+            "deeper_play_by_play": true,
+            "deeper_player_stats": true,
+            "deeper_team_stats": true,
+            "basic_play_by_play": true,
+            "basic_player_stats": true,
+            "basic_team_stats": true
+          }
+        },
+        "competitors": [
+          {
+            "id": "sr:competitor:4789",
+            "name": "Paraguay",
+            "country": "Paraguay",
+            "country_code": "PRY",
+            "abbreviation": "PAR",
+            "qualifier": "home",
+            "gender": "male"
+          },
+          {
+            "id": "sr:competitor:4481",
+            "name": "France",
+            "country": "France",
+            "country_code": "FRA",
+            "abbreviation": "FRA",
+            "qualifier": "away",
+            "gender": "male"
+          }
+        ],
+        "venue": {
+          "id": "sr:venue:1833",
+          "name": "Philadelphia Stadium",
+          "capacity": 68324,
+          "city_name": "Philadelphia, PA",
+          "city_id": "sr:city:929",
+          "country_name": "USA",
+          "map_coordinates": "39.9014, -75.1675",
+          "country_code": "USA",
+          "timezone": "America/New_York"
         }
       },
       "sport_event_status": {
