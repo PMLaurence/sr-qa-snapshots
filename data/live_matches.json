@@ -1,120 +1,7 @@
 {
-  "updated_at": "2026-07-05T18:52:51.227242+00:00",
+  "updated_at": "2026-07-05T22:35:33.953691+00:00",
   "live": [],
   "upcoming_today": [
-    {
-      "sport_event": {
-        "id": "sr:sport_event:53452517",
-        "start_time": "2026-07-05T20:00:00+00:00",
-        "start_time_confirmed": true,
-        "date_confirmed": true,
-        "sport_event_context": {
-          "sport": {
-            "id": "sr:sport:1",
-            "name": "Soccer"
-          },
-          "category": {
-            "id": "sr:category:4",
-            "name": "International"
-          },
-          "competition": {
-            "id": "sr:competition:16",
-            "name": "FIFA World Cup",
-            "parent_id": "sr:competition:24660",
-            "gender": "men"
-          },
-          "season": {
-            "id": "sr:season:101177",
-            "name": "World Cup 2026",
-            "start_date": "2026-06-11",
-            "end_date": "2026-07-19",
-            "year": "2026",
-            "competition_id": "sr:competition:16"
-          },
-          "stage": {
-            "order": 2,
-            "type": "cup",
-            "phase": "playoffs",
-            "start_date": "2026-06-28",
-            "end_date": "2026-07-19",
-            "year": "2026"
-          },
-          "round": {
-            "name": "round_of_16",
-            "competition_sport_event_number": 91,
-            "cup_round_sport_event_number": 1,
-            "cup_round_number_of_sport_events": 1,
-            "cup_round_id": "sr:cup_round:2218799"
-          },
-          "groups": [
-            {
-              "id": "sr:cup:160561",
-              "name": "World Cup 2026, Knockout stage"
-            }
-          ]
-        },
-        "coverage": {
-          "type": "sport_event",
-          "sport_event_properties": {
-            "lineups": true,
-            "formations": true,
-            "venue": true,
-            "extended_play_by_play": true,
-            "extended_player_stats": true,
-            "extended_team_stats": true,
-            "lineups_availability": "pre",
-            "ballspotting": true,
-            "commentary": true,
-            "fun_facts": true,
-            "goal_scorers": true,
-            "goal_scorers_live": true,
-            "scores": "live",
-            "game_clock": true,
-            "deeper_play_by_play": true,
-            "deeper_player_stats": true,
-            "deeper_team_stats": true,
-            "basic_play_by_play": true,
-            "basic_player_stats": true,
-            "basic_team_stats": true
-          }
-        },
-        "competitors": [
-          {
-            "id": "sr:competitor:4748",
-            "name": "Brazil",
-            "country": "Brazil",
-            "country_code": "BRA",
-            "abbreviation": "BRA",
-            "qualifier": "home",
-            "gender": "male"
-          },
-          {
-            "id": "sr:competitor:4475",
-            "name": "Norway",
-            "country": "Norway",
-            "country_code": "NOR",
-            "abbreviation": "NOR",
-            "qualifier": "away",
-            "gender": "male"
-          }
-        ],
-        "venue": {
-          "id": "sr:venue:1981",
-          "name": "New York New Jersey Stadium",
-          "capacity": 80663,
-          "city_name": "East Rutherford, NJ",
-          "city_id": "sr:city:972",
-          "country_name": "USA",
-          "map_coordinates": "40.8135, -74.0745",
-          "country_code": "USA",
-          "timezone": "America/New_York"
-        }
-      },
-      "sport_event_status": {
-        "status": "not_started",
-        "match_status": "not_started"
-      }
-    },
     {
       "sport_event": {
         "id": "sr:sport_event:53452519",
@@ -221,6 +108,119 @@
           "map_coordinates": "19.3029, -99.1505",
           "country_code": "MEX",
           "timezone": "America/Mexico_City"
+        }
+      },
+      "sport_event_status": {
+        "status": "not_started",
+        "match_status": "not_started"
+      }
+    },
+    {
+      "sport_event": {
+        "id": "sr:sport_event:53452513",
+        "start_time": "2026-07-06T19:00:00+00:00",
+        "start_time_confirmed": true,
+        "date_confirmed": true,
+        "sport_event_context": {
+          "sport": {
+            "id": "sr:sport:1",
+            "name": "Soccer"
+          },
+          "category": {
+            "id": "sr:category:4",
+            "name": "International"
+          },
+          "competition": {
+            "id": "sr:competition:16",
+            "name": "FIFA World Cup",
+            "parent_id": "sr:competition:24660",
+            "gender": "men"
+          },
+          "season": {
+            "id": "sr:season:101177",
+            "name": "World Cup 2026",
+            "start_date": "2026-06-11",
+            "end_date": "2026-07-19",
+            "year": "2026",
+            "competition_id": "sr:competition:16"
+          },
+          "stage": {
+            "order": 2,
+            "type": "cup",
+            "phase": "playoffs",
+            "start_date": "2026-06-28",
+            "end_date": "2026-07-19",
+            "year": "2026"
+          },
+          "round": {
+            "name": "round_of_16",
+            "competition_sport_event_number": 93,
+            "cup_round_sport_event_number": 1,
+            "cup_round_number_of_sport_events": 1,
+            "cup_round_id": "sr:cup_round:2218795"
+          },
+          "groups": [
+            {
+              "id": "sr:cup:160561",
+              "name": "World Cup 2026, Knockout stage"
+            }
+          ]
+        },
+        "coverage": {
+          "type": "sport_event",
+          "sport_event_properties": {
+            "lineups": true,
+            "formations": true,
+            "venue": true,
+            "extended_play_by_play": true,
+            "extended_player_stats": true,
+            "extended_team_stats": true,
+            "lineups_availability": "pre",
+            "ballspotting": true,
+            "commentary": true,
+            "fun_facts": true,
+            "goal_scorers": true,
+            "goal_scorers_live": true,
+            "scores": "live",
+            "game_clock": true,
+            "deeper_play_by_play": true,
+            "deeper_player_stats": true,
+            "deeper_team_stats": true,
+            "basic_play_by_play": true,
+            "basic_player_stats": true,
+            "basic_team_stats": true
+          }
+        },
+        "competitors": [
+          {
+            "id": "sr:competitor:4704",
+            "name": "Portugal",
+            "country": "Portugal",
+            "country_code": "PRT",
+            "abbreviation": "POR",
+            "qualifier": "home",
+            "gender": "male"
+          },
+          {
+            "id": "sr:competitor:4698",
+            "name": "Spain",
+            "country": "Spain",
+            "country_code": "ESP",
+            "abbreviation": "ESP",
+            "qualifier": "away",
+            "gender": "male"
+          }
+        ],
+        "venue": {
+          "id": "sr:venue:6650",
+          "name": "Dallas Stadium",
+          "capacity": 70649,
+          "city_name": "Arlington, TX",
+          "city_id": "sr:city:4410",
+          "country_name": "USA",
+          "map_coordinates": "32.748, -97.0934",
+          "country_code": "USA",
+          "timezone": "America/Chicago"
         }
       },
       "sport_event_status": {
