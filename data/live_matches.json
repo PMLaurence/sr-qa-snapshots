@@ -1,7 +1,6 @@
 {
-  "updated_at": "2026-07-07T18:27:48.676539+00:00",
-  "live": [],
-  "upcoming_today": [
+  "updated_at": "2026-07-07T22:39:47.049749+00:00",
+  "live": [
     {
       "sport_event": {
         "id": "sr:sport_event:53452523",
@@ -111,9 +110,43 @@
         }
       },
       "sport_event_status": {
-        "status": "not_started",
-        "match_status": "not_started"
+        "status": "live",
+        "match_status": "awaiting_penalties",
+        "home_score": 0,
+        "away_score": 0,
+        "home_normaltime_score": 0,
+        "away_normaltime_score": 0,
+        "home_overtime_score": 0,
+        "away_overtime_score": 0,
+        "period_scores": [
+          {
+            "home_score": 0,
+            "away_score": 0,
+            "type": "regular_period",
+            "number": 1
+          },
+          {
+            "home_score": 0,
+            "away_score": 0,
+            "type": "regular_period",
+            "number": 2
+          },
+          {
+            "home_score": 0,
+            "away_score": 0,
+            "type": "overtime"
+          },
+          {
+            "home_score": 0,
+            "away_score": 0,
+            "type": "penalties"
+          }
+        ],
+        "clock": {
+          "played": "120:00"
+        }
       }
     }
-  ]
+  ],
+  "upcoming_today": []
 }
