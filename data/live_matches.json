@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-07-09T17:34:07.529491+00:00",
+  "updated_at": "2026-07-09T22:49:08.779050+00:00",
   "live": [],
   "upcoming_today": [
     {
       "sport_event": {
-        "id": "sr:sport_event:53452525",
-        "start_time": "2026-07-09T20:00:00+00:00",
+        "id": "sr:sport_event:53452527",
+        "start_time": "2026-07-10T19:00:00+00:00",
         "start_time_confirmed": true,
         "date_confirmed": true,
         "sport_event_context": {
@@ -41,10 +41,10 @@
           },
           "round": {
             "name": "quarterfinal",
-            "competition_sport_event_number": 97,
+            "competition_sport_event_number": 98,
             "cup_round_sport_event_number": 1,
             "cup_round_number_of_sport_events": 1,
-            "cup_round_id": "sr:cup_round:2218807"
+            "cup_round_id": "sr:cup_round:2218809"
           },
           "groups": [
             {
@@ -80,34 +80,34 @@
         },
         "competitors": [
           {
-            "id": "sr:competitor:4481",
-            "name": "France",
-            "country": "France",
-            "country_code": "FRA",
-            "abbreviation": "FRA",
+            "id": "sr:competitor:4698",
+            "name": "Spain",
+            "country": "Spain",
+            "country_code": "ESP",
+            "abbreviation": "ESP",
             "qualifier": "home",
             "gender": "male"
           },
           {
-            "id": "sr:competitor:4778",
-            "name": "Morocco",
-            "country": "Morocco",
-            "country_code": "MAR",
-            "abbreviation": "MAR",
+            "id": "sr:competitor:4717",
+            "name": "Belgium",
+            "country": "Belgium",
+            "country_code": "BEL",
+            "abbreviation": "BEL",
             "qualifier": "away",
             "gender": "male"
           }
         ],
         "venue": {
-          "id": "sr:venue:2379",
-          "name": "Boston Stadium",
-          "capacity": 64146,
-          "city_name": "Foxborough, MA",
-          "city_id": "sr:city:1320",
+          "id": "sr:venue:52183",
+          "name": "Los Angeles Stadium",
+          "capacity": 70492,
+          "city_name": "Inglewood, CA",
+          "city_id": "sr:city:19157",
           "country_name": "USA",
-          "map_coordinates": "42.0909, -71.2643",
+          "map_coordinates": "33.953536, -118.338734",
           "country_code": "USA",
-          "timezone": "America/New_York"
+          "timezone": "America/Los_Angeles"
         }
       },
       "sport_event_status": {
