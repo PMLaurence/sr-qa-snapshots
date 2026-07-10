@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-07-10T17:24:12.397040+00:00",
+  "updated_at": "2026-07-10T21:34:30.004324+00:00",
   "live": [],
   "upcoming_today": [
     {
       "sport_event": {
-        "id": "sr:sport_event:53452527",
-        "start_time": "2026-07-10T19:00:00+00:00",
+        "id": "sr:sport_event:53452529",
+        "start_time": "2026-07-11T21:00:00+00:00",
         "start_time_confirmed": true,
         "date_confirmed": true,
         "sport_event_context": {
@@ -41,10 +41,10 @@
           },
           "round": {
             "name": "quarterfinal",
-            "competition_sport_event_number": 98,
+            "competition_sport_event_number": 99,
             "cup_round_sport_event_number": 1,
             "cup_round_number_of_sport_events": 1,
-            "cup_round_id": "sr:cup_round:2218809"
+            "cup_round_id": "sr:cup_round:2218811"
           },
           "groups": [
             {
@@ -80,34 +80,34 @@
         },
         "competitors": [
           {
-            "id": "sr:competitor:4698",
-            "name": "Spain",
-            "country": "Spain",
-            "country_code": "ESP",
-            "abbreviation": "ESP",
+            "id": "sr:competitor:4475",
+            "name": "Norway",
+            "country": "Norway",
+            "country_code": "NOR",
+            "abbreviation": "NOR",
             "qualifier": "home",
             "gender": "male"
           },
           {
-            "id": "sr:competitor:4717",
-            "name": "Belgium",
-            "country": "Belgium",
-            "country_code": "BEL",
-            "abbreviation": "BEL",
+            "id": "sr:competitor:4713",
+            "name": "England",
+            "country": "England",
+            "country_code": "ENG",
+            "abbreviation": "ENG",
             "qualifier": "away",
             "gender": "male"
           }
         ],
         "venue": {
-          "id": "sr:venue:52183",
-          "name": "Los Angeles Stadium",
-          "capacity": 70492,
-          "city_name": "Inglewood, CA",
-          "city_id": "sr:city:19157",
+          "id": "sr:venue:21306",
+          "name": "Miami Stadium",
+          "capacity": 64478,
+          "city_name": "Miami, FL",
+          "city_id": "sr:city:897",
           "country_name": "USA",
-          "map_coordinates": "33.953536, -118.338734",
+          "map_coordinates": "25.9583, -80.2396",
           "country_code": "USA",
-          "timezone": "America/Los_Angeles"
+          "timezone": "America/New_York"
         }
       },
       "sport_event_status": {
