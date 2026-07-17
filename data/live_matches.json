@@ -1,5 +1,119 @@
 {
-  "updated_at": "2026-07-17T20:28:00.479702+00:00",
+  "updated_at": "2026-07-17T21:25:07.747773+00:00",
   "live": [],
-  "upcoming_today": []
+  "upcoming_today": [
+    {
+      "sport_event": {
+        "id": "sr:sport_event:53452539",
+        "start_time": "2026-07-18T21:00:00+00:00",
+        "start_time_confirmed": true,
+        "date_confirmed": true,
+        "sport_event_context": {
+          "sport": {
+            "id": "sr:sport:1",
+            "name": "Soccer"
+          },
+          "category": {
+            "id": "sr:category:4",
+            "name": "International"
+          },
+          "competition": {
+            "id": "sr:competition:16",
+            "name": "FIFA World Cup",
+            "parent_id": "sr:competition:24660",
+            "gender": "men"
+          },
+          "season": {
+            "id": "sr:season:101177",
+            "name": "World Cup 2026",
+            "start_date": "2026-06-11",
+            "end_date": "2026-07-19",
+            "year": "2026",
+            "competition_id": "sr:competition:16"
+          },
+          "stage": {
+            "order": 2,
+            "type": "cup",
+            "phase": "playoffs",
+            "start_date": "2026-06-28",
+            "end_date": "2026-07-19",
+            "year": "2026"
+          },
+          "round": {
+            "name": "3rd_place_playoff",
+            "competition_sport_event_number": 103,
+            "cup_round_sport_event_number": 1,
+            "cup_round_number_of_sport_events": 1,
+            "cup_round_id": "sr:cup_round:2218821"
+          },
+          "groups": [
+            {
+              "id": "sr:cup:160561",
+              "name": "World Cup 2026, Knockout stage"
+            }
+          ]
+        },
+        "coverage": {
+          "type": "sport_event",
+          "sport_event_properties": {
+            "lineups": true,
+            "formations": true,
+            "venue": true,
+            "extended_play_by_play": true,
+            "extended_player_stats": true,
+            "extended_team_stats": true,
+            "lineups_availability": "pre",
+            "ballspotting": true,
+            "commentary": true,
+            "fun_facts": true,
+            "goal_scorers": true,
+            "goal_scorers_live": true,
+            "scores": "live",
+            "game_clock": true,
+            "deeper_play_by_play": true,
+            "deeper_player_stats": true,
+            "deeper_team_stats": true,
+            "basic_play_by_play": true,
+            "basic_player_stats": true,
+            "basic_team_stats": true
+          }
+        },
+        "competitors": [
+          {
+            "id": "sr:competitor:4481",
+            "name": "France",
+            "country": "France",
+            "country_code": "FRA",
+            "abbreviation": "FRA",
+            "qualifier": "home",
+            "gender": "male"
+          },
+          {
+            "id": "sr:competitor:4713",
+            "name": "England",
+            "country": "England",
+            "country_code": "ENG",
+            "abbreviation": "ENG",
+            "qualifier": "away",
+            "gender": "male"
+          }
+        ],
+        "venue": {
+          "id": "sr:venue:21306",
+          "name": "Miami Stadium",
+          "capacity": 64478,
+          "city_name": "Miami, FL",
+          "city_id": "sr:city:897",
+          "country_name": "USA",
+          "map_coordinates": "25.9583, -80.2396",
+          "country_code": "USA",
+          "timezone": "America/New_York"
+        }
+      },
+      "sport_event_status": {
+        "status": "not_started",
+        "match_status": "not_started"
+      }
+    }
+  ]
 }
