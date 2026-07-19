@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-19T19:55:19.135632+00:00",
+  "updated_at": "2026-07-19T20:56:29.631355+00:00",
   "live": [
     {
       "sport_event": {
@@ -111,7 +111,7 @@
       },
       "sport_event_status": {
         "status": "live",
-        "match_status": "1st_half",
+        "match_status": "2nd_half",
         "home_score": 0,
         "away_score": 0,
         "period_scores": [
@@ -120,12 +120,16 @@
             "away_score": 0,
             "type": "regular_period",
             "number": 1
+          },
+          {
+            "home_score": 0,
+            "away_score": 0,
+            "type": "regular_period",
+            "number": 2
           }
         ],
         "clock": {
-          "played": "45:00",
-          "stoppage_time_played": "03:17",
-          "stoppage_time_announced": "04:00"
+          "played": "74:15"
         }
       }
     }
